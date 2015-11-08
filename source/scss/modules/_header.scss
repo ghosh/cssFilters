@@ -1,0 +1,18 @@
+$g1: #6b87e3;
+$g2: #e041cc;
+$g3: #fc4b53;
+
+.header {
+  background: linear-gradient(to bottom, c('base', 'header-bg-start'), c('base', 'header-bg-end'));
+  height: 70px;
+
+  &__gradient {
+    background: linear-gradient(to left, $g1 10%, $g2, $g3 90%);
+    display: block;
+    height: 5px;
+    width: 100%;
+  }
+}
+
+$gradient-start: unset;
+$gradient-end: unset;

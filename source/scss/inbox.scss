@@ -1,0 +1,129 @@
+@import '../../bower_components/sanitize-css/dist/sanitize';
+@import '../../bower_components/stylekit/stylekit';
+@import '../../bower_components/cssgram/source/css/cssgram';
+
+@import 'config/color';
+@import 'base/layout';
+@import 'modules/header';
+
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.wrap {
+  display: flex;
+  height: calc(100% - 70px);
+  position: absolute;
+  width: 100%;
+}
+
+.main {
+  align-items: center;
+  background: c('base', 'main-bg');
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  padding: 20px;
+}
+
+$border-color: rgba(234, 234, 234, .01);
+
+.sidebar {
+  background: linear-gradient(90deg, c('base', 'sidebar-bg-start'), c('base', 'sidebar-bg-end'));
+  border-left: solid 1px $border-color;
+  flex-basis: 30%;
+  overflow-y: scroll;
+}
+
+.photo {
+  &__img {
+    max-width: 100%;
+  }
+}
+
+$tab-bg-color: #0f1010;
+$tab-bg-color-active: transparent;
+$tab-label-color: #5e6873;
+$tab-label-color-active: #c4ccdf;
+
+
+.tabs {
+  &__headers {
+    display: flex;
+  }
+
+  &__item {
+    align-items: center;
+    background-color: $tab-bg-color;
+    cursor: pointer;
+    display: flex;
+    flex-grow: 1;
+    height: 60px;
+    justify-content: center;
+
+    &.is-active {
+      background-color: $tab-bg-color-active;
+      cursor: default;
+    }
+  }
+
+  &__label {
+    color: $tab-label-color;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    padding: 20px;
+  }
+}
+
+
+$range-color: #434751;
+$range-handle-color: #9c5ad8;
+
+.range {
+  -webkit-appearance: none;
+  background: $range-color;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 2px;
+  outline: 0;
+  width: 100%;
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: $range-handle-color;
+  border-radius: 100%;
+  cursor: pointer;
+  height: 12px;
+  position: relative;
+  width: 12px;
+  z-index: 3;
+}
+
+$slider-label-color: #7e8792;
+
+.slider {
+  &__label,
+  &__value {
+    color: $slider-label-color;
+    font-size: 12px;
+  }
+
+  &__content {
+    @include clearfix();
+  }
+
+  &__label {
+    float: left;
+  }
+
+  &__value {
+    float: right;
+  }
+}

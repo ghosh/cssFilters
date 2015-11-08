@@ -1,0 +1,14 @@
+.l-wrap {
+  display: flex;
+  height: calc(100% - 70px);
+  position: absolute;
+}
+
+.l-main {
+  flex-grow: 1;
+}
+
+.l-sidebar {
+  flex-basis: 30%;
+  overflow-y: scroll;
+}

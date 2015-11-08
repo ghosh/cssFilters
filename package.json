@@ -1,0 +1,55 @@
+{
+  "name": "reactor",
+  "version": "0.1.0",
+  "description": "Super charged, opiniated starter kit for react applications",
+  "main": "build/index.html",
+  "devDependencies": {
+    "autoprefixer": "^6.1.0",
+    "cssnano": "^3.3.2",
+    "eslint": "^1.9.0",
+    "eslint-plugin-react": "^3.7.1",
+    "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-if": "^2.0.0",
+    "gulp-open": "^1.0.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-postcss": "^6.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.0",
+    "gulp-scss-lint": "^0.3.7",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.2",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.5",
+    "react": "^0.14.2",
+    "reactify": "^1.1.1",
+    "yargs": "^3.29.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ghosh/Reaction.git"
+  },
+  "keywords": [
+    "react",
+    "browserify",
+    "ES6",
+    "ES2015",
+    "sass",
+    "react",
+    "jsx",
+    "starter",
+    "kit"
+  ],
+  "author": "Indrashish Ghosh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ghosh/Reaction/issues"
+  },
+  "homepage": "https://github.com/Ghosh/Reaction#readme"
+}
