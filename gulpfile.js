@@ -8,6 +8,8 @@ var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
+var svgmin = require('gulp-svgmin');
+var svgSprite = require('gulp-svg-sprite');
 var gutil = require('gulp-util');
 var rename = require('gulp-rename');
 var gulpif = require('gulp-if');
@@ -90,12 +92,11 @@ gulp.task('scripts', function() {
   gutil.log(gutil.colors.grey('---------------------------------------'));
 });
 
-
 // ----------------------------------------------------------------------------
 // Markup - Copies the only html file from source to build folder
 // ----------------------------------------------------------------------------
 gulp.task('copy', function(){
-  return gulp.src('source/**/*.html')
+  gulp.src('source/**/*.html')
     .pipe(gulp.dest('build/'))
     .pipe(connect.reload());
 });

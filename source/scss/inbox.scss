@@ -24,6 +24,7 @@
   display: flex;
   flex-grow: 1;
   justify-content: center;
+  overflow: hidden;
   padding: 20px;
 }
 
@@ -38,7 +39,9 @@ $border-color: rgba(234, 234, 234, .01);
 
 .photo {
   &__img {
+    height: 400px;
     max-width: 100%;
+    width: 600px;
   }
 }
 
@@ -107,6 +110,7 @@ $range-handle-color: #9c5ad8;
 }
 
 $slider-label-color: #7e8792;
+$slider-value-bg-color: #0f1010;
 
 .slider {
   &__label,
@@ -121,9 +125,12 @@ $slider-label-color: #7e8792;
 
   &__label {
     float: left;
+    margin-top: 9px;
   }
 
   &__value {
+    background-color: $slider-value-bg-color;
     float: right;
+    padding: 5px 10px;
   }
 }

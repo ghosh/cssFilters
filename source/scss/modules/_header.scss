@@ -1,6 +1,7 @@
 $g1: #6b87e3;
 $g2: #e041cc;
 $g3: #fc4b53;
+$header-color: #c4ccdf;
 
 .header {
   background: linear-gradient(to bottom, c('base', 'header-bg-start'), c('base', 'header-bg-end'));
@@ -11,6 +12,12 @@ $g3: #fc4b53;
     display: block;
     height: 5px;
     width: 100%;
+  }
+
+  &__logo {
+    color: $header-color;
+    font-size: 110px;
+    margin-top: -35px;
   }
 }
 
