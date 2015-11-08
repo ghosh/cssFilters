@@ -1,0 +1,32 @@
+.tabs {
+  &__headers {
+    display: flex;
+  }
+
+  &__item {
+    align-items: center;
+    background-color: c('base', 'tab-bg-color');
+    cursor: pointer;
+    display: flex;
+    flex-grow: 1;
+    height: 60px;
+    justify-content: center;
+
+    &.is-active {
+      background-color: c('base', 'tab-bg-color-active');
+      cursor: default;
+    }
+  }
+
+  &__label {
+    color: c('base', 'tab-label-color');
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,22 @@
+.slider {
+  &__label,
+  &__value {
+    color: c('base', 'slider-label-color');
+    font-size: 12px;
+  }
+
+  &__content {
+    @include clearfix();
+  }
+
+  &__label {
+    float: left;
+    margin-top: 9px;
+  }
+
+  &__value {
+    background-color: c('base', 'slider-value-bg-color');
+    float: right;
+    padding: 5px 10px;
+  }
+}

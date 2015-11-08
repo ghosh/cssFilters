@@ -1,0 +1,28 @@
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.wrap {
+  display: flex;
+  height: calc(100% - 70px);
+  position: absolute;
+  width: 100%;
+}
+
+.main {
+  align-items: center;
+  background: c('base', 'main-bg');
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.sidebar {
+  background: linear-gradient(90deg, c('base', 'sidebar-bg-start'), c('base', 'sidebar-bg-end'));
+  border-left: solid 1px c('base', 'sidebar-border-color');
+  flex-basis: 30%;
+  overflow-y: scroll;
+}

@@ -1,0 +1,20 @@
+.range {
+  -webkit-appearance: none;
+  background: c('base', 'range-path-color');
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 2px;
+  outline: 0;
+  width: 100%;
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: c('base', 'range-handle-color');
+  border-radius: 100%;
+  cursor: pointer;
+  height: 12px;
+  position: relative;
+  width: 12px;
+  z-index: 3;
+}
