@@ -16,5 +16,11 @@
 pre {
   background-color: c('base', 'tab-bg-color');
   color: c('base', 'slider-label-color');
+  cursor: text;
   padding: 20px;
+
+  span {
+    font-family: 'Source Code Pro', 'Menlo', monospace;
+    font-size: 13px;
+  }
 }
