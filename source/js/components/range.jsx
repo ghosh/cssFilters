@@ -6,7 +6,7 @@ var RangleSlider = React.createClass({
         <div className="slider">
           <div className="slider__content">
             <p className="slider__label">{this.props.label}</p>
-            <p className="slider__value">{this.props.value}</p>
+            <p className="slider__value">{this.props.value}{this.props.unit}</p>
           </div>
           <input
             ref="range"

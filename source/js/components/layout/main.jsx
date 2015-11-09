@@ -7,6 +7,10 @@ var Main = React.createClass({
       filters += 'brightness(' + this.props.filter.brightness + '%) ';
       filters += 'contrast(' + this.props.filter.contrast + '%) ';
       filters += 'saturate(' + this.props.filter.saturate + '%) ';
+      filters += 'grayscale(' + this.props.filter.grayscale + '%) ';
+      filters += 'invert(' + this.props.filter.invert + '%) ';
+      filters += 'hue-rotate(' + this.props.filter.hueRotate + 'deg) ';
+      filters += 'blur(' + this.props.filter.blur + 'px) ';
 
       var filterStyles = {
         position: 'relative',
@@ -34,7 +38,7 @@ var Main = React.createClass({
           <div className="photo">
             <figure style={filterStyles}>
               <div style={pseudoStyles} />
-              <img src="https://source.unsplash.com/mtNweauBsMQ/800x600" alt="" className="photo__img" />
+              <img src="https://source.unsplash.com/W_9mOGUwR08/800x600" alt="" className="photo__img" />
             </figure>
           </div>
         </main>

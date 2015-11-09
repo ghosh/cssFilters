@@ -9,7 +9,11 @@ var App = React.createClass({
           contrast: 100,
           brightness: 100,
           saturate: 100,
-          sepia: 0
+          grayscale: 0,
+          sepia: 0,
+          invert: 0,
+          hueRotate: 0,
+          blur: 0
         }
       }
     },
@@ -18,9 +22,13 @@ var App = React.createClass({
       this.setState({
         filter: {
           contrast: this.refs.sidebar.refs.contrast.refs.range.value,
-          sepia: this.refs.sidebar.refs.sepia.refs.range.value,
           saturate: this.refs.sidebar.refs.saturate.refs.range.value,
-          brightness: this.refs.sidebar.refs.brightness.refs.range.value
+          brightness: this.refs.sidebar.refs.brightness.refs.range.value,
+          sepia: this.refs.sidebar.refs.sepia.refs.range.value,
+          grayscale: this.refs.sidebar.refs.grayscale.refs.range.value,
+          invert: this.refs.sidebar.refs.invert.refs.range.value,
+          hueRotate: this.refs.sidebar.refs.hueRotate.refs.range.value,
+          blur: this.refs.sidebar.refs.blur.refs.range.value
         }
       });
     },
