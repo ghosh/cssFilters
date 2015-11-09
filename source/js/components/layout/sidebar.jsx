@@ -33,7 +33,7 @@ var Sidebar = React.createClass({
               <RangeSlider ref="blur" label="Blur" value={this.props.filter.blur} min="0" max="10" unit="px" handleRangeChange={this.props.handleRangeChange}/>
             </TabPanel>
             <TabPanel className="tabs__content">
-              <CodeBlock filter="this.props.filter" />
+              <CodeBlock filter={this.props.filter} />
             </TabPanel>
           </Tabs>
         </aside>
