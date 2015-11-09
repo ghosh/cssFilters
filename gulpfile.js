@@ -10,6 +10,7 @@ var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var svgmin = require('gulp-svgmin');
 var svgSprite = require('gulp-svg-sprite');
+var notify = require('gulp-notify');
 var gutil = require('gulp-util');
 var rename = require('gulp-rename');
 var gulpif = require('gulp-if');
@@ -62,7 +63,7 @@ gulp.task('styles', function(){
     cssnano
   ];
   gulp.src(config.styles.srcDirectory + config.styles.srcFile)
-    .pipe(plumber())
+    .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss(processors))
@@ -81,7 +82,7 @@ gulp.task('styles', function(){
 // ----------------------------------------------------------------------------
 gulp.task('scripts', function() {
   gulp.src(config.scripts.srcDirectory + config.scripts.srcFile)
-    .pipe(plumber())
+    .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
     .pipe(browserify({ transform: 'reactify', debug: true }))
     .pipe(concat(config.scripts.distFile))
     .pipe(uglify())

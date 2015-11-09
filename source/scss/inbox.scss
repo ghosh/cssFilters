@@ -12,3 +12,9 @@
 @import 'modules/range';
 @import 'modules/tab';
 @import 'modules/photo';
+
+pre {
+  background-color: c('base', 'tab-bg-color');
+  color: c('base', 'slider-label-color');
+  padding: 20px;
+}
