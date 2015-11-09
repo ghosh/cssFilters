@@ -7,19 +7,7 @@ var TabList = ReactTabs.TabList;
 var TabPanel = ReactTabs.TabPanel;
 
 var Sidebar = React.createClass({
-    getInitialState: function() {
-      return {
-        contrast: 50,
-        sepia: 0
-      }
-    },
 
-    handleOnChange: function(event) {
-      this.setState({
-        contrast: this.refs.contrast.refs.range.value,
-        sepia: this.refs.sepia.refs.range.value
-      });
-    },
 
     render: function () {
         return (
@@ -34,8 +22,10 @@ var Sidebar = React.createClass({
                </Tab>
              </TabList>
               <TabPanel className="tabs__content">
-                <RangeSlider ref="contrast" label="Contrast" value={this.state.contrast} handleOnChange={this.handleOnChange}/>
-                <RangeSlider ref="sepia" label="Sepia" value={this.state.sepia} handleOnChange={this.handleOnChange}/>
+                <RangeSlider ref="contrast" label="Contrast" value={this.props.filter.contrast} min="0" max="200" handleRangeChange={this.props.handleRangeChange}/>
+                <RangeSlider ref="brightness" label="Brightness" value={this.props.filter.brightness} min="0" max="200" handleRangeChange={this.props.handleRangeChange}/>
+                <RangeSlider ref="saturate" label="Saturate" value={this.props.filter.saturate} min="0" max="200" handleRangeChange={this.props.handleRangeChange}/>
+                <RangeSlider ref="sepia" label="Seapia" value={this.props.filter.sepia} min="0" max="100" handleRangeChange={this.props.handleRangeChange}/>
               </TabPanel>
               <TabPanel>
                 <h2>Hello from Bar</h2>
