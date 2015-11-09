@@ -18,7 +18,7 @@ var App = React.createClass({
       }
     },
 
-    handleRangeChange: function() {
+    handleRangeChange: function(event) {
       this.setState({
         filter: {
           contrast: this.refs.sidebar.refs.contrast.refs.range.value,
