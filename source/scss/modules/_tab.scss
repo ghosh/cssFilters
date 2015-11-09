@@ -1,3 +1,4 @@
+// scss-lint:disable ImportantRule SelectorFormat
 .tabs {
   &__headers {
     display: flex;
@@ -5,12 +6,15 @@
 
   &__item {
     align-items: center;
-    background-color: c('base', 'tab-bg-color');
+    background-color: c('base', 'tab-bg-color') !important;
+    border: 0 !important;
+    border-radius: 0 !important;
     cursor: pointer;
     display: flex;
     flex-grow: 1;
     height: 60px;
     justify-content: center;
+    text-align: center;
 
     &.is-active {
       background-color: c('base', 'tab-bg-color-active');
@@ -21,12 +25,40 @@
   &__label {
     color: c('base', 'tab-label-color');
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 600 !important;
     letter-spacing: 1px;
+    margin-top: 15px;
     text-transform: uppercase;
   }
 
   &__content {
     padding: 20px;
   }
+}
+
+.ReactTabs__Tab--selected {
+  background-color: c('base', 'tab-bg-color-active') !important;
+  border: none !important;
+  cursor: default !important;
+
+  .tabs__label {
+    color: $header-color;
+  }
+
+}
+
+
+.react-tabs [role=tablist] {
+  border: none !important;
+  border-bottom: solid 1px transparent !important;
+  display: flex !important;
+}
+
+.react-tabs [role=tablist]:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.react-tabs [role=tab]:focus:after {
+  background: transparent !important;
 }

@@ -7,5 +7,5 @@ var App = require('./components/app.jsx');
  */
 ReactDOM.render(
   <App name="World" />,
-  document.getElementById('container')
+  document.getElementById('root')
 );

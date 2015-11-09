@@ -1,11 +1,14 @@
 var React = require('React');
+var Sidebar = require('./layout/sidebar.jsx');
+var Main = require('./layout/main.jsx');
 
 var App = React.createClass({
     render: function() {
         return (
-          <div className="card">
-            <p>Hello {this.props.name}</p>
-          </div>
+          <section className="wrap">
+            <Main />
+            <Sidebar />
+          </section>
         );
     }
 });
