@@ -42,7 +42,7 @@
   cursor: default !important;
 
   .tabs__label {
-    color: $header-color;
+    color: c('base', 'header-text-color');
   }
 
 }

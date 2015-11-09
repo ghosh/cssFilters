@@ -1,4 +1,6 @@
 .slider {
+  margin-bottom: 10px;
+
   &__label,
   &__value {
     color: c('base', 'slider-label-color');

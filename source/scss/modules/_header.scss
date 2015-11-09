@@ -1,25 +1,17 @@
-$g1: #6b87e3;
-$g2: #e041cc;
-$g3: #fc4b53;
-$header-color: #c4ccdf;
-
 .header {
   background: linear-gradient(to bottom, c('base', 'header-bg-start'), c('base', 'header-bg-end'));
   height: 70px;
 
   &__gradient {
-    background: linear-gradient(to left, $g1 10%, $g2, $g3 90%);
+    background: linear-gradient(to left, c('base', 'header-gradient-start') 10%, c('base', 'header-gradient-mid'), c('base', 'header-gradient-end') 90%);
     display: block;
     height: 5px;
     width: 100%;
   }
 
   &__logo {
-    color: $header-color;
+    color: c('base', 'header-text-color');
     font-size: 110px;
     margin-top: -35px;
   }
 }
-
-$gradient-start: unset;
-$gradient-end: unset;
