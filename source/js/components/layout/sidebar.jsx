@@ -2,6 +2,7 @@ var React = require('React');
 var RangeSlider = require('../range.jsx');
 var CodeBlock = require('../codeblock.jsx');
 var BlendModes = require('../blendmode.jsx');
+var Background = require('../background.jsx');
 var ReactTabs = require('react-tabs');
 var Tab = ReactTabs.Tab;
 var Tabs = ReactTabs.Tabs;
@@ -10,8 +11,8 @@ var TabPanel = ReactTabs.TabPanel;
 
 var Sidebar = React.createClass({
 
-
     render: function () {
+
       return (
         <aside className="sidebar">
           <Tabs className="tabs" onSelect={this.handleSelected} selectedIndex={0} >
@@ -36,11 +37,10 @@ var Sidebar = React.createClass({
               <RangeSlider ref="blur" label="Blur" value={this.props.filter.blur} min="0" max="10" unit="px" handeUpdate={this.props.handeUpdate}/>
 
               <p className="tabs__subheader">Overlay</p>
-              <RangeSlider ref="opacity" label="Opacity" value={this.props.filter.opacity} min="0" max="100" unit="%" handeUpdate={this.props.handeUpdate}/>
+
+              <Background />
               <BlendModes ref="blend" handeUpdate={this.props.handeUpdate} />
-
-
-
+              <RangeSlider ref="opacity" label="Opacity" value={this.props.filter.opacity} min="0" max="100" unit="%" handeUpdate={this.props.handeUpdate}/>
 
 
             </TabPanel>

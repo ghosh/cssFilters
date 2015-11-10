@@ -10,6 +10,7 @@
 .wrap {
   display: flex;
   height: calc(100% - 70px);
+  overflow: hidden;
   position: absolute;
   width: 100%;
 }

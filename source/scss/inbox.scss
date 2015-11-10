@@ -13,6 +13,7 @@
 @import 'modules/tab';
 @import 'modules/photo';
 @import 'modules/dropdown';
+@import 'modules/radio';
 
 pre {
   background-color: c('base', 'tab-bg-color');
@@ -28,6 +29,9 @@ pre {
 
 .opts {
   @include clearfix();
+  margin-bottom: 20px;
+  margin-top: 10px;
+
   label {
     color: c('base', 'slider-label-color');
     float: left;

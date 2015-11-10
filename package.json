@@ -26,6 +26,7 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
     "react": "^0.14.2",
+    "react-radio-group": "^2.1.1",
     "react-tabs": "^0.5.1",
     "reactify": "^1.1.1",
     "yargs": "^3.29.0"

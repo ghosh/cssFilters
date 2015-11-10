@@ -1,0 +1,98 @@
+// scss-lint:disable ColorVariable NestingDepth
+$rad-color: #15b0ed;
+$speed: .15s;
+$size: 14px;
+
+.radio {
+
+  height: 1px;
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+
+  + label {
+    color: c('base', 'slider-label-color');
+    cursor: pointer;
+    display: block;
+    font-size: 13px;
+    line-height: 2em;
+    position: relative;
+    text-indent: 2.2em;
+    transition: $speed;
+
+    > i {
+      background: c('base', 'tab-bg-color');
+      border-radius: $size;
+      box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .08), 1px 1px 1px rgba(255, 255, 255, .03);
+      height: $size;
+      left: 0;
+      margin-top: - $size / 2;
+      position: absolute;
+      top: 50%;
+      width: $size;
+
+      &:after {
+        background: rgba(255, 255, 255, .7);
+        border-radius: $size * 2;
+        content: '';
+        height: 100%;
+        left: 50%;
+        margin-left: - $size / 2;
+        margin-top: - $size / 2;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        transform: scale(.5);
+        width: 100%;
+      }
+
+    }
+
+  }
+
+  &:hover {
+
+    + label {
+      color: rgba(255, 255, 255, 1);
+
+      > i:after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &:focus,
+  &:active {
+
+    + label {
+      color: rgba(255, 255, 255, 1);
+
+      > i {
+        box-shadow: 0 0 1px lighten($rad-color, 50%), 0 0 2px lighten($rad-color, 30%), 0 0 5px $rad-color;
+      }
+    }
+  }
+
+  &:checked + label {
+    color: rgba(255, 255, 255, 1);
+
+    > i:after {
+      background: $rad-color;
+      border-radius: $size * 5;
+      opacity: 1;
+      transform: scale(.8);
+      transition: all .2s cubic-bezier(.555, -.375, 0, 1.615);
+    }
+  }
+
+  &:focus:checked + label,
+  &:active:checked + label {
+    color: $rad-color;
+  }
+
+}
+
+.radio-group {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
