@@ -12,6 +12,7 @@
 @import 'modules/range';
 @import 'modules/tab';
 @import 'modules/photo';
+@import 'modules/dropdown';
 
 pre {
   background-color: c('base', 'tab-bg-color');
@@ -23,4 +24,19 @@ pre {
     font-family: 'Source Code Pro', 'Menlo', monospace;
     font-size: 13px;
   }
+}
+
+.opts {
+  @include clearfix();
+  label {
+    color: c('base', 'slider-label-color');
+    float: left;
+    font-size: 12px;
+    margin-top: 9px;
+  }
+
+  .dropdown {
+    float: right;
+  }
+
 }

@@ -16,7 +16,7 @@ var RangleSlider = React.createClass({
             min={this.props.min}
             max={this.props.max}
             step="1"
-            onChange={this.props.handleRangeChange}
+            onChange={this.props.handeUpdate}
           />
         </div>
       );

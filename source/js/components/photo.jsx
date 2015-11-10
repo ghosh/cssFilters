@@ -4,13 +4,13 @@ var Photo = React.createClass({
     render: function() {
 
       var filters = 'sepia(' + this.props.filter.sepia + '%) ';
-      filters += 'brightness(' + this.props.filter.brightness + '%) ';
-      filters += 'contrast(' + this.props.filter.contrast + '%) ';
-      filters += 'saturate(' + this.props.filter.saturate + '%) ';
-      filters += 'grayscale(' + this.props.filter.grayscale + '%) ';
-      filters += 'invert(' + this.props.filter.invert + '%) ';
-      filters += 'hue-rotate(' + this.props.filter.hueRotate + 'deg) ';
-      filters += 'blur(' + this.props.filter.blur + 'px) ';
+          filters += 'brightness(' + this.props.filter.brightness + '%) ';
+          filters += 'contrast(' + this.props.filter.contrast + '%) ';
+          filters += 'saturate(' + this.props.filter.saturate + '%) ';
+          filters += 'grayscale(' + this.props.filter.grayscale + '%) ';
+          filters += 'invert(' + this.props.filter.invert + '%) ';
+          filters += 'hue-rotate(' + this.props.filter.hueRotate + 'deg) ';
+          filters += 'blur(' + this.props.filter.blur + 'px) ';
 
       var filterStyles = {
         position: 'relative',
@@ -29,8 +29,8 @@ var Photo = React.createClass({
         position: 'absolute',
 
         background: '#efcdad',
-        mixBlendMode: 'soft-light',
-        opacity: '0.5'
+        mixBlendMode: this.props.filter.blend,
+        opacity: (this.props.filter.opacity/100)
       }
 
       return (

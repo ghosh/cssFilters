@@ -6,19 +6,21 @@ var App = React.createClass({
     getInitialState: function() {
       return {
         filter: {
-          contrast: 100,
-          brightness: 100,
-          saturate: 100,
-          grayscale: 0,
-          sepia: 0,
-          invert: 0,
-          hueRotate: 0,
-          blur: 0
+          contrast: '100',
+          brightness: '100',
+          saturate: '100',
+          grayscale: '0',
+          sepia: '0',
+          invert: '0',
+          hueRotate: '0',
+          blur: '0',
+          opacity: '100',
+          blend: 'normal'
         }
       }
     },
 
-    handleRangeChange: function(event) {
+    handeUpdate: function(event) {
       this.setState({
         filter: {
           contrast: this.refs.sidebar.refs.contrast.refs.range.value,
@@ -28,7 +30,9 @@ var App = React.createClass({
           grayscale: this.refs.sidebar.refs.grayscale.refs.range.value,
           invert: this.refs.sidebar.refs.invert.refs.range.value,
           hueRotate: this.refs.sidebar.refs.hueRotate.refs.range.value,
-          blur: this.refs.sidebar.refs.blur.refs.range.value
+          blur: this.refs.sidebar.refs.blur.refs.range.value,
+          opacity: this.refs.sidebar.refs.opacity.refs.range.value,
+          blend: this.refs.sidebar.refs.blend.refs.select.value
         }
       });
     },
@@ -37,7 +41,8 @@ var App = React.createClass({
         return (
           <section className="wrap">
             <Main filter={this.state.filter} />
-            <Sidebar ref="sidebar" filter={this.state.filter} handleRangeChange={this.handleRangeChange}/>
+            <Sidebar ref="sidebar" filter={this.state.filter} handeUpdate={this.handeUpdate}
+            />
           </section>
         );
     }

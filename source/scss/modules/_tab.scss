@@ -22,7 +22,8 @@
     }
   }
 
-  &__label {
+  &__label,
+  &__subheader {
     color: c('base', 'tab-label-color');
     font-size: 12px;
     font-weight: 600 !important;
@@ -31,8 +32,13 @@
     text-transform: uppercase;
   }
 
+  &__subheader {
+    margin-bottom: 10px;
+    margin-top: 40px;
+  }
+
   &__content {
-    padding: 20px;
+    padding: 20px 40px;
   }
 }
 
