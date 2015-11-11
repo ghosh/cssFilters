@@ -47,3 +47,30 @@ pre {
   }
 
 }
+
+
+$swatch-border: #424242;
+
+.swatch {
+  border: solid 1px $swatch-border;
+  border-radius: 1px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px;
+}
+
+
+
+.color {
+  border-radius: 2px;
+  height: 14px;
+  width: 36px;
+}
+
+.color-swatch {
+  position: relative;
+}
+
+.color-cont {
+  // position: relative;
+}
