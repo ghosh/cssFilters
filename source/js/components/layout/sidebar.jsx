@@ -39,9 +39,8 @@ var Sidebar = React.createClass({
               <p className="tabs__subheader">Overlay</p>
 
               <Background
-                overlayColor={this.props.overlayColor}
+                overlay={this.props.overlay}
                 updateOverlayColor={this.props.updateOverlayColor}
-                overlayType={this.props.overlayType}
                 updateOverlayType={this.props.updateOverlayType}
               />
               <BlendModes ref="blend" handeUpdate={this.props.handeUpdate} />

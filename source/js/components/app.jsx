@@ -1,4 +1,5 @@
 var React = require('React');
+var Update = require('react-addons-update');
 var Sidebar = require('./layout/sidebar.jsx');
 var Main = require('./layout/main.jsx');
 
@@ -17,8 +18,10 @@ var App = React.createClass({
           opacity: '100',
           blend: 'normal'
         },
-        overlayType: 'solid',
-        overlayColor: { a: 1, b: 62, g: 142, r: 253 }
+        overlay: {
+          type: 'solid',
+          color: { a: 1, b: 62, g: 142, r: 253 }
+        }
       }
     },
 
@@ -41,15 +44,21 @@ var App = React.createClass({
     },
 
     updateOverlayType: function(event) {
-      this.setState({
-        overlayType: event.currentTarget.value
-      })
+      var newState = Update(this.state, {
+        overlay: {
+          type: { $set: event.currentTarget.value }
+        }
+      });
+      this.setState(newState);
     },
 
     updateOverlayColor: function(color) {
-      this.setState({
-        overlayColor: color.rgb
+      var newState = Update(this.state, {
+        overlay: {
+          color: { $set: color.rgb }
+        }
       });
+      this.setState(newState);
     },
 
     render: function() {
@@ -58,11 +67,10 @@ var App = React.createClass({
             <Main filter={this.state.filter} />
             <Sidebar
               ref="sidebar"
-              overlayColor={this.state.overlayColor}
-              updateOverlayColor={this.updateOverlayColor}
-              overlayType={this.state.overlayType}
-              updateOverlayType={this.updateOverlayType}
+              overlay={this.state.overlay}
               filter={this.state.filter}
+              updateOverlayColor={this.updateOverlayColor}
+              updateOverlayType={this.updateOverlayType}
               handeUpdate={this.handeUpdate}
             />
           </section>

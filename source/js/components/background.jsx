@@ -9,11 +9,11 @@ var Background = React.createClass({
     return (
       <div>
         <OverlayType
-          overlayType={this.props.overlayType}
+          overlayType={this.props.overlay.type}
           updateOverlayType={this.props.updateOverlayType}
         />
         <Color
-          overlayColor={this.props.overlayColor}
+          overlayColor={this.props.overlay.color}
           updateOverlayColor={this.props.updateOverlayColor}
           label="Background Color"
         />
