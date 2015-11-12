@@ -39,6 +39,8 @@ var Sidebar = React.createClass({
               <p className="tabs__subheader">Overlay</p>
 
               <Background
+                overlayColor={this.props.overlayColor}
+                updateOverlayColor={this.props.updateOverlayColor}
                 overlayType={this.props.overlayType}
                 updateOverlayType={this.props.updateOverlayType}
               />

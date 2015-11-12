@@ -8,8 +8,15 @@ var Background = React.createClass({
   render: function() {
     return (
       <div>
-        <OverlayType overlayType={this.props.overlayType} updateOverlayType={this.props.updateOverlayType}/>
-        <Color label="Background Color"/>
+        <OverlayType
+          overlayType={this.props.overlayType}
+          updateOverlayType={this.props.updateOverlayType}
+        />
+        <Color
+          overlayColor={this.props.overlayColor}
+          updateOverlayColor={this.props.updateOverlayColor}
+          label="Background Color"
+        />
       </div>
     );
   }

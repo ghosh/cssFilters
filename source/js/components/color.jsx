@@ -4,8 +4,7 @@ var ColorPicker = require('react-color');
 var Color = React.createClass({
     getInitialState: function() {
       return {
-        displayColorPicker: false,
-        color: { a: 1, b: 62, g: 142, r: 253 }
+        displayColorPicker: false
       }
     },
 
@@ -15,12 +14,6 @@ var Color = React.createClass({
       });
     },
 
-    handleChange: function(color) {
-        this.setState({
-          color: color.rgb
-        });
-    },
-
     handleClose: function() {
       this.setState({ displayColorPicker: false });
     },
@@ -28,7 +21,7 @@ var Color = React.createClass({
     render: function() {
 
       var swatchColor = {
-        backgroundColor: 'rgba('+this.state.color.r+', '+this.state.color.g+', '+this.state.color.b+', '+this.state.color.a+')'
+        backgroundColor: 'rgba('+this.props.overlayColor.r+', '+this.props.overlayColor.g+', '+this.props.overlayColor.b+', '+this.props.overlayColor.a+')'
       }
 
       var popupPosition = {
@@ -49,9 +42,9 @@ var Color = React.createClass({
           <p className="color-text">{this.props.label}</p>
           <ColorPicker
             className="color-picker"
-            color={ this.state.color }
+            color={ this.props.overlayColor }
             positionCSS={ popupPosition }
-            onChange={ this.handleChange }
+            onChange={ this.props.updateOverlayColor }
             onClose={ this.handleClose }
             display={ this.state.displayColorPicker }
             type="chrome"

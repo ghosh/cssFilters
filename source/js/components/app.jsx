@@ -17,7 +17,8 @@ var App = React.createClass({
           opacity: '100',
           blend: 'normal'
         },
-        overlayType: 'solid'
+        overlayType: 'solid',
+        overlayColor: { a: 1, b: 62, g: 142, r: 253 }
       }
     },
 
@@ -45,12 +46,20 @@ var App = React.createClass({
       })
     },
 
+    updateOverlayColor: function(color) {
+      this.setState({
+        overlayColor: color.rgb
+      });
+    },
+
     render: function() {
         return (
           <section className="wrap">
             <Main filter={this.state.filter} />
             <Sidebar
               ref="sidebar"
+              overlayColor={this.state.overlayColor}
+              updateOverlayColor={this.updateOverlayColor}
               overlayType={this.state.overlayType}
               updateOverlayType={this.updateOverlayType}
               filter={this.state.filter}
