@@ -173,17 +173,8 @@ gulp.task('watch', function() {
 // ----------------------------------------------------------------------------
 gulp.task('lint', ['scsslint', 'jslint']);
 
-gulp.task('print', function(){
-  gutil.log(gutil.colors.yellow(' '));
-  gutil.log(gutil.colors.grey('---------------------------------------------------'));
-  gutil.log(gutil.colors.yellow('Reactor'), gutil.colors.blue('v1.0.0'));
-  gutil.log(gutil.colors.white('A super charged, opinitated react starter kit'));
-  gutil.log(gutil.colors.grey('---------------------------------------------------'));
-  gutil.log(gutil.colors.yellow(' '));
-})
-
 
 // ----------------------------------------------------------------------------
 // Main Gulp Task - `gulp go` accepts a `--open` flag to open in browser
 // ----------------------------------------------------------------------------
-gulp.task('go', ['print', 'lint', 'server', 'watch', 'open']);
+gulp.task('go', ['lint', 'server', 'watch', 'open']);
