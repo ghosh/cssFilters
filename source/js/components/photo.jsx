@@ -28,7 +28,7 @@ var Photo = React.createClass({
         pointerEvents: 'none',
         position: 'absolute',
 
-        background: '#efcdad',
+        background: 'rgba('+this.props.overlay.color.r+', '+this.props.overlay.color.g+', '+this.props.overlay.color.b+', '+this.props.overlay.color.a+')',
         mixBlendMode: this.props.filter.blend,
         opacity: (this.props.filter.opacity/100)
       }

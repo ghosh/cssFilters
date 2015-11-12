@@ -6,7 +6,7 @@ var Main = React.createClass({
 
       return (
         <main className="main">
-          <Photo filter={this.props.filter} />
+          <Photo overlay={this.props.overlay} filter={this.props.filter} />
         </main>
       )
     }

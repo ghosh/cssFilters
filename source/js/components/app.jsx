@@ -64,7 +64,10 @@ var App = React.createClass({
     render: function() {
         return (
           <section className="wrap">
-            <Main filter={this.state.filter} />
+            <Main
+              overlay={this.state.overlay}
+              filter={this.state.filter}
+            />
             <Sidebar
               ref="sidebar"
               overlay={this.state.overlay}
