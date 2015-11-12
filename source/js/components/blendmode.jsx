@@ -3,7 +3,7 @@ var React = require('React');
 var BlendMode = React.createClass({
     render: function() {
 
-      var modes = [ 'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge',  'color-burn', 'hard-light', 'soft-light', 'difference', 'exclusion', 'hue', 'saturation', 'color', 'luminosity', 'initial', 'inherit', 'unset' ];
+      var modes = [ 'overlay', 'normal', 'multiply', 'screen', 'darken', 'lighten', 'color-dodge',  'color-burn', 'hard-light', 'soft-light', 'difference', 'exclusion', 'hue', 'saturation', 'color', 'luminosity', 'initial', 'inherit', 'unset' ];
 
       var blendModes = modes.map(function(mode, index){
         return (

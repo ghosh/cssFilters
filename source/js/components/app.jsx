@@ -15,8 +15,8 @@ var App = React.createClass({
           invert: '0',
           hueRotate: '0',
           blur: '0',
-          opacity: '100',
-          blend: 'normal'
+          opacity: '50',
+          blend: 'overlay'
         },
         overlay: {
           type: 'solid',
