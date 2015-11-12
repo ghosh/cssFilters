@@ -20,7 +20,15 @@ var App = React.createClass({
         },
         overlay: {
           type: 'solid',
-          color: { a: 1, b: 62, g: 142, r: 253 }
+          color: { a: 1, b: 62, g: 142, r: 253 },
+          color1: {
+            color: { a: 1, b: 62, g: 142, r: 253 },
+            stop: 10
+          },
+          color2: {
+            color: { a: 1, b: 62, g: 142, r: 253 },
+            stop: 100
+          }
         }
       }
     },
@@ -61,6 +69,74 @@ var App = React.createClass({
       this.setState(newState);
     },
 
+    updateColor1: function(color) {
+      var newState = Update(this.state, {
+        overlay: {
+          color1: {
+            color: { $set: color.rgb }
+          }
+        }
+      });
+      this.setState(newState);
+    },
+
+    updateColor2: function(color) {
+      var newState = Update(this.state, {
+        overlay: {
+          color2: {
+            color: { $set: color.rgb }
+          }
+        }
+      });
+      this.setState(newState);
+    },
+
+    updateColor1Stop: function(event) {
+
+      newNum = (typeof event == 'number') ? event : parseInt(event.target.value);
+
+      if (newNum >= 1 || newNum <=100) {
+        var num = newNum;
+      } else if (newNum >= 100) {
+        var num = 100;
+      } else {
+        var num = 1;
+      }
+
+      var newState = Update(this.state, {
+        overlay: {
+          color1: {
+            stop: { $set: num }
+          }
+        }
+      });
+      this.setState(newState);
+    },
+
+    updateColor2Stop: function(event) {
+
+      newNum = (typeof event == 'number') ? event : parseInt(event.target.value);
+
+      if (newNum > 1 && newNum <100) {
+        var num = newNum;
+      } else if (newNum >= 100) {
+        var num = 100;
+      } else if (newNum < 1) {
+        var num = 1;
+      } else {
+        num = 1;
+      }
+
+      var newState = Update(this.state, {
+        overlay: {
+          color2: {
+            stop: { $set: num }
+          }
+        }
+      });
+      this.setState(newState);
+    },
+
     render: function() {
         return (
           <section className="wrap">
@@ -73,6 +149,10 @@ var App = React.createClass({
               overlay={this.state.overlay}
               filter={this.state.filter}
               updateOverlayColor={this.updateOverlayColor}
+              updateColor1={this.updateColor1}
+              updateColor1Stop={this.updateColor1Stop}
+              updateColor2={this.updateColor2}
+              updateColor2Stop={this.updateColor2Stop}
               updateOverlayType={this.updateOverlayType}
               handeUpdate={this.handeUpdate}
             />

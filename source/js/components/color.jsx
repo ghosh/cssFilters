@@ -8,16 +8,16 @@ var Color = React.createClass({
     render: function() {
 
       if (this.props.colorStop == 'true') {
-        var colorStop = <ColorStop />
+        var colorStop = <ColorStop stopValue={this.props.stopValue} updateStop={this.props.updateStop} />
       }
 
       return (
         <div className="color">
           <ColorSwatch
             overlayColor={this.props.overlayColor}
-            updateOverlayColor={this.props.updateOverlayColor}
-            label="Color 1"
-            colorStop="false"
+            updateColor={this.props.updateColor}
+            label={this.props.label}
+            colorStop={this.props.colorStop}
           />
           {colorStop}
         </div>

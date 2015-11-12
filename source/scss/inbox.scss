@@ -55,6 +55,7 @@ $swatch-border: #424242;
 
 .color {
   display: flex;
+  margin-bottom: 15px;
 
   &__box {
     @include clearfix();
