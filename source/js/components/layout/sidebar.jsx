@@ -38,7 +38,10 @@ var Sidebar = React.createClass({
 
               <p className="tabs__subheader">Overlay</p>
 
-              <Background />
+              <Background
+                overlayType={this.props.overlayType}
+                updateOverlayType={this.props.updateOverlayType}
+              />
               <BlendModes ref="blend" handeUpdate={this.props.handeUpdate} />
               <RangeSlider ref="opacity" label="Opacity" value={this.props.filter.opacity} min="0" max="100" unit="%" handeUpdate={this.props.handeUpdate}/>
 

@@ -16,7 +16,8 @@ var App = React.createClass({
           blur: '0',
           opacity: '100',
           blend: 'normal'
-        }
+        },
+        overlayType: 'solid'
       }
     },
 
@@ -33,15 +34,27 @@ var App = React.createClass({
           blur: this.refs.sidebar.refs.blur.refs.range.value,
           opacity: this.refs.sidebar.refs.opacity.refs.range.value,
           blend: this.refs.sidebar.refs.blend.refs.select.value
-        }
+        },
+        overlayType: 'solid'
       });
+    },
+
+    updateOverlayType: function(event) {
+      this.setState({
+        overlayType: event.currentTarget.value
+      })
     },
 
     render: function() {
         return (
           <section className="wrap">
             <Main filter={this.state.filter} />
-            <Sidebar ref="sidebar" filter={this.state.filter} handeUpdate={this.handeUpdate}
+            <Sidebar
+              ref="sidebar"
+              overlayType={this.state.overlayType}
+              updateOverlayType={this.updateOverlayType}
+              filter={this.state.filter}
+              handeUpdate={this.handeUpdate}
             />
           </section>
         );
