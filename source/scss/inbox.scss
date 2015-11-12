@@ -51,34 +51,92 @@ pre {
 
 
 
-
-
-.color {
-  border-radius: 2px;
-  height: 14px;
-  width: 36px;
-}
-
-.color-swatch {
-  @include clearfix();
-  position: relative;
-}
-
 $swatch-border: #424242;
 
-.swatch {
-  border: solid 1px $swatch-border;
-  border-radius: 1px;
-  cursor: pointer;
-  display: inline-block;
-  float: left;
-  padding: 5px;
+.color {
+  display: flex;
+
+  &__box {
+    @include clearfix();
+    flex-basis: 50%;
+    position: relative;
+  }
+
+  &__stop {
+    @include clearfix();
+    flex-basis: 50%;
+  }
+
+  &__text {
+    color: c('base', 'slider-label-color');
+    float: left;
+    font-size: 12px;
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+
+  &__swatch {
+    border: solid 1px $swatch-border;
+    border-radius: 1px;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    padding: 5px;
+  }
+
+  &__preview {
+    border-radius: 2px;
+    height: 14px;
+    width: 36px;
+  }
+
+  &__stop-number {
+    float: left;
+  }
+
+  &__stop-label {
+    color: c('base', 'slider-label-color');
+    float: left;
+    font-size: 12px;
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+
 }
 
-.color-text {
-  color: c('base', 'slider-label-color');
-  float: left;
-  font-size: 12px;
-  margin-left: 10px;
-  margin-top: 5px;
+
+
+
+
+$control-color: #898989;
+
+.number {
+  @include clearfix();
+  position: relative;
+  width: 100px;
+
+  &__input {
+    background-color: c('base', 'tab-bg-color');
+    color: c('base', 'slider-label-color');
+    float: left;
+    font-size: 12px;
+    height: 30px;
+    outline: 0;
+    padding: 4px 8px 6px 10px;
+    width: 50%;
+  }
+
+  &__up,
+  &__down {
+    background-color: lighten(c('base', 'tab-bg-color'), 10%);
+    color: $control-color;
+    cursor: pointer;
+    float: left;
+    height: 30px;
+    padding-top: 2px;
+    text-align: center;
+    user-select: none;
+    width: 20%;
+  }
+
 }

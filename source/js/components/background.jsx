@@ -15,7 +15,8 @@ var Background = React.createClass({
         <Color
           overlayColor={this.props.overlay.color}
           updateOverlayColor={this.props.updateOverlayColor}
-          label="Background Color"
+          label="Color 1"
+          colorStop="false"
         />
       </div>
     );

@@ -35,22 +35,31 @@ var Color = React.createClass({
       }
 
       return (
-        <div className="color-swatch">
-          <div className="swatch" onClick={ this.toggleColorPicker }>
-            <div className="color" style={swatchColor}></div>
+        <div className="color">
+          <div className="color__box">
+            <div className="color__swatch" onClick={ this.toggleColorPicker }>
+              <div className="color__preview" style={swatchColor}></div>
+            </div>
+            <p className="color__text">{this.props.label}</p>
+            <ColorPicker
+              className="color-picker"
+              color={ this.props.overlayColor }
+              positionCSS={ popupPosition }
+              onChange={ this.props.updateOverlayColor }
+              onClose={ this.handleClose }
+              display={ this.state.displayColorPicker }
+              type="chrome"
+            />
           </div>
-          <p className="color-text">{this.props.label}</p>
-          <ColorPicker
-            className="color-picker"
-            color={ this.props.overlayColor }
-            positionCSS={ popupPosition }
-            onChange={ this.props.updateOverlayColor }
-            onClose={ this.handleClose }
-            display={ this.state.displayColorPicker }
-            type="chrome"
-          />
+          <div className="color__stop">
+            <div className="color__stop-number number">
+              <input className="number__input" id="number" min="1" max="100" />
+              <div className="number__up">+</div>
+              <div className="number__down">-</div>
+            </div>
+            <p className="color__stop-label">Stop</p>
+          </div>
         </div>
-
       );
 
     }
