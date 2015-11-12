@@ -20,6 +20,9 @@ var App = React.createClass({
         },
         overlay: {
           type: 'solid',
+          direction: 'to bottom',
+          position: 'middle center',
+          size: 'closest-corner',
           color: { a: 1, b: 62, g: 142, r: 253 },
           color1: {
             color: { a: 1, b: 62, g: 142, r: 253 },
@@ -46,9 +49,26 @@ var App = React.createClass({
           blur: this.refs.sidebar.refs.blur.refs.range.value,
           opacity: this.refs.sidebar.refs.opacity.refs.range.value,
           blend: this.refs.sidebar.refs.blend.refs.select.value
-        },
-        overlayType: 'solid'
+        }
       });
+    },
+
+    updateGradientPositions: function(event) {
+      if ( this.refs.sidebar.refs.background.refs.gradientsDirection != undefined ) {
+        var newState = Update(this.state, {
+          overlay: {
+            direction: { $set: this.refs.sidebar.refs.background.refs.gradientsDirection.refs.direction.value }
+          }
+        });
+      } else if ( this.refs.sidebar.refs.background.refs.gradientsPosition != undefined ) {
+        var newState = Update(this.state, {
+          overlay: {
+            position: { $set: this.refs.sidebar.refs.background.refs.gradientsPosition.refs.position.value },
+            size: { $set: this.refs.sidebar.refs.background.refs.gradientsSize.refs.size.value }
+          }
+        });
+      }
+      this.setState(newState);
     },
 
     updateOverlayType: function(event) {
@@ -154,6 +174,7 @@ var App = React.createClass({
               updateColor2={this.updateColor2}
               updateColor2Stop={this.updateColor2Stop}
               updateOverlayType={this.updateOverlayType}
+              updateGradientPositions={this.updateGradientPositions}
               handeUpdate={this.handeUpdate}
             />
           </section>

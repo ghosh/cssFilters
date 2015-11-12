@@ -2,6 +2,8 @@ var React = require('React');
 var Color = require('./Color.jsx');
 var OverlayType = require('./overlaytype.jsx');
 var GradientDirections = require('./gradientdirection.jsx');
+var GradientPositions = require('./gradientposition.jsx');
+var GradientSizes = require('./gradientsize.jsx');
 
 var Background = React.createClass({
   displayName: 'Background',
@@ -39,13 +41,32 @@ var Background = React.createClass({
               stopValue={this.props.overlay.color2.stop}
             />
 
-            <GradientDirections ref="gradient-direction" />
+            <GradientDirections ref="gradientsDirection" direction={this.props.overlay.direction} updateGradientPositions={this.props.updateGradientPositions}/>
           </div>
         )
       } else if ( this.props.overlay.type == 'radial' ) {
         return (
           <div className="">
-            <p> Hakuna Matata </p>
+            <Color
+              overlayColor={this.props.overlay.color1.color}
+              updateColor={this.props.updateColor1}
+              updateStop={this.props.updateColor1Stop}
+              label="Color 1"
+              colorStop="true"
+              stopValue={this.props.overlay.color1.stop}
+            />
+
+            <Color
+              overlayColor={this.props.overlay.color2.color}
+              updateColor={this.props.updateColor2}
+              updateStop={this.props.updateColor2Stop}
+              label="Color 2"
+              colorStop="true"
+              stopValue={this.props.overlay.color2.stop}
+            />
+
+            <GradientPositions ref="gradientsPosition" position={this.props.overlay.position} updateGradientPositions={this.props.updateGradientPositions}/>
+            <GradientSizes ref="gradientsSize" size={this.props.overlay.size} updateGradientPositions={this.props.updateGradientPositions}/>
           </div>
         )
       }

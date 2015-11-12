@@ -15,7 +15,7 @@ var GradientDirection = React.createClass({
         <div className="opts">
           <label>Gradient Diection</label>
           <div className="dropdown">
-              <select ref="graident-direction" name="gradient-direction" className="dropdown-select" onChange={this.props.handeUpdate}>
+              <select ref="direction" name="gradient-direction" className="dropdown-select" onChange={this.props.updateGradientPositions} value={this.props.direction}>
                 {gradientDirections}
               </select>
             </div>

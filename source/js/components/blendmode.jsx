@@ -17,7 +17,7 @@ var BlendMode = React.createClass({
         <div className="opts">
           <label>Mix Blend Mode</label>
           <div className="dropdown">
-              <select ref="select" name="blend-mode" className="dropdown-select" onChange={this.props.handeUpdate}>
+              <select ref="select" name="blend-mode" className="dropdown-select" onChange={this.props.handeUpdate} value={this.props.blend}>
                 {blendModes}
               </select>
           </div>
