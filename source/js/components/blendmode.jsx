@@ -7,7 +7,9 @@ var BlendMode = React.createClass({
 
       var blendModes = modes.map(function(mode, index){
         return (
-          <option value={mode} key={index}>{mode.replace(/^./, mode[0].toUpperCase())}</option>
+          <option value={mode} key={index}>
+            {mode.replace(/^./, mode[0].toUpperCase())}
+          </option>
         );
       });
 
@@ -18,8 +20,8 @@ var BlendMode = React.createClass({
               <select ref="select" name="blend-mode" className="dropdown-select" onChange={this.props.handeUpdate}>
                 {blendModes}
               </select>
-            </div>
           </div>
+        </div>
       );
     }
 });

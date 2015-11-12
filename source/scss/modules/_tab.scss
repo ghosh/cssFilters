@@ -34,7 +34,12 @@
 
   &__subheader {
     margin-bottom: 10px;
-    margin-top: 40px;
+    margin-top: 0;
+
+    &:last-child {
+      margin-top: 40px;
+    }
+
   }
 
   &__content {
