@@ -49,15 +49,7 @@ pre {
 }
 
 
-$swatch-border: #424242;
 
-.swatch {
-  border: solid 1px $swatch-border;
-  border-radius: 1px;
-  cursor: pointer;
-  display: inline-block;
-  padding: 5px;
-}
 
 
 
@@ -68,9 +60,25 @@ $swatch-border: #424242;
 }
 
 .color-swatch {
+  @include clearfix();
   position: relative;
 }
 
-.color-cont {
-  // position: relative;
+$swatch-border: #424242;
+
+.swatch {
+  border: solid 1px $swatch-border;
+  border-radius: 1px;
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  padding: 5px;
+}
+
+.color-text {
+  color: c('base', 'slider-label-color');
+  float: left;
+  font-size: 12px;
+  margin-left: 10px;
+  margin-top: 5px;
 }

@@ -46,6 +46,7 @@ var Color = React.createClass({
           <div className="swatch" onClick={ this.toggleColorPicker }>
             <div className="color" style={swatchColor}></div>
           </div>
+          <p className="color-text">{this.props.label}</p>
           <ColorPicker
             className="color-picker"
             color={ this.state.color }
