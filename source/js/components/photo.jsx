@@ -3,6 +3,28 @@ var React = require('React');
 var Photo = React.createClass({
     render: function() {
 
+      var direction  = this.props.overlay.direction;
+      var size       = this.props.overlay.size;
+      var position       = this.props.overlay.position;
+      var color      = 'rgba('+this.props.overlay.color.r+', '+this.props.overlay.color.g+', '+this.props.overlay.color.b+', '+this.props.overlay.color.a+')';
+      var color1     = 'rgba('+this.props.overlay.color1.color.r+', '+this.props.overlay.color1.color.g+', '+this.props.overlay.color1.color.b+', '+this.props.overlay.color1.color.a+')';
+      var color2     = 'rgba('+this.props.overlay.color2.color.r+', '+this.props.overlay.color2.color.g+', '+this.props.overlay.color2.color.b+', '+this.props.overlay.color2.color.a+')';
+      var color1Stop = this.props.overlay.color1.stop;
+      var color2Stop = this.props.overlay.color2.stop;
+
+      switch (this.props.overlay.type) {
+        case 'solid':
+          var background = color;
+          break;
+        case 'linear':
+          var background = 'linear-gradient( '+direction+', '+color1+' '+color1Stop+'%, '+color2+' '+color2Stop+'% )';
+          break;
+        case 'radial':
+          var background = '-webkit-radial-gradient('+position+', ellipse '+size+', '+color1+' '+color1Stop+'%, '+color2+' '+color2Stop+'% )';
+          break;
+        default:
+      }
+
       var filters = 'sepia(' + this.props.filter.sepia + '%) ';
           filters += 'brightness(' + this.props.filter.brightness + '%) ';
           filters += 'contrast(' + this.props.filter.contrast + '%) ';
@@ -28,9 +50,10 @@ var Photo = React.createClass({
         pointerEvents: 'none',
         position: 'absolute',
 
-        background: 'rgba('+this.props.overlay.color.r+', '+this.props.overlay.color.g+', '+this.props.overlay.color.b+', '+this.props.overlay.color.a+')',
         mixBlendMode: this.props.filter.blend,
-        opacity: (this.props.filter.opacity/100)
+        opacity: (this.props.filter.opacity/100),
+
+        background: background
       }
 
       return (

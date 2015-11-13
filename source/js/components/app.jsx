@@ -21,15 +21,15 @@ var App = React.createClass({
         overlay: {
           type: 'solid',
           direction: 'to bottom',
-          position: 'middle center',
+          position: 'center center',
           size: 'closest-corner',
           color: { a: 1, b: 62, g: 142, r: 253 },
           color1: {
-            color: { a: 1, b: 62, g: 142, r: 253 },
+            color: { a: 1, b: 35, g: 35, r: 35 },
             stop: 10
           },
           color2: {
-            color: { a: 1, b: 62, g: 142, r: 253 },
+            color: { a: 0.04, b: 70, g: 70, r: 70 },
             stop: 100
           }
         }

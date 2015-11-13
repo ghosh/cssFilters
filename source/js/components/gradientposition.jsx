@@ -3,7 +3,7 @@ var React = require('React');
 var GradientPosition = React.createClass({
     render: function() {
 
-      var positions = [ 'top left', 'top center', 'top right', 'middle left', 'middle center', 'middle right', 'bottom left', 'bottom center', 'bottom right' ];
+      var positions = [ 'left top', 'center top', 'right top', 'left center', 'center center', 'right center', 'left bottom', 'center bottom', 'right bottom' ];
 
       var gradientPositions = positions.map(function(position, index){
         return (
