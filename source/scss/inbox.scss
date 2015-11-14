@@ -179,6 +179,7 @@ $control-color: #898989;
 .thumb {
   border: solid 1px c('base', 'border-color');
   border-radius: 2px;
+  cursor: pointer;
   margin: 0 3px;
   padding: 5px;
   padding-bottom: 0;

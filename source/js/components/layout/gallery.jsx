@@ -4,6 +4,11 @@ var presets = require('../../presets');
 var classNames = require('classnames');
 
 var Gallery = React.createClass({
+
+    enablePreset: function(name, event) {
+      this.props.updatePreset(name);
+    },
+
     render: function() {
 
       var galleryClass = classNames({
@@ -12,7 +17,7 @@ var Gallery = React.createClass({
       });
 
       var thumbs = [];
-
+      var self = this;
       Object.keys(presets).forEach(function(key) {
         var name = key;
         var object = presets[key];
@@ -26,7 +31,7 @@ var Gallery = React.createClass({
         var filter = factory.getFilterStyles();
 
         thumbs.push(
-          <li className="gallery__item" key={name}>
+          <li className="gallery__item" key={name} onClick={this.enablePreset.bind(this, name)}>
             <div className={thumbClass}>
               <figure className="thumb__figure" style={filter}>
                 <div style={overlay} />
@@ -38,7 +43,7 @@ var Gallery = React.createClass({
             </div>
           </li>
         );
-      });
+      }.bind(this));
 
       return (
         <div className={galleryClass}>

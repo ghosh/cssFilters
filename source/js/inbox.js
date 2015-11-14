@@ -6,6 +6,6 @@ var App = require('./components/app.jsx');
  * Kickoff the app
  */
 ReactDOM.render(
-  <App name="World" />,
+  <App />,
   document.getElementById('root')
 );

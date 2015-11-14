@@ -3,10 +3,12 @@ var Update = require('react-addons-update');
 var Sidebar = require('./layout/sidebar.jsx');
 var Main = require('./layout/main.jsx');
 var Gallery = require('./layout/gallery.jsx');
+var Presets = require('../presets');
 
 var App = React.createClass({
     getInitialState: function() {
       return {
+        'preset': 'custom',
         gallery: {
           visible: false
         },
@@ -49,8 +51,13 @@ var App = React.createClass({
       this.setState(newState);
     },
 
-    updatePreset: function() {
-      console.log('Enabling Preset');
+    updatePreset: function(key) {
+      var newState = Update(this.state, {
+        preset: { $set: key },
+        filter: { $set: Presets[key].filter },
+        overlay: { $set: Presets[key].overlay }
+      });
+      this.setState(newState);
     },
 
     handeUpdate: function(event) {
@@ -123,7 +130,8 @@ var App = React.createClass({
           color2: {
             color: { $set: color.rgb }
           }
-        }
+        },
+
       });
       this.setState(newState);
     },
@@ -144,7 +152,8 @@ var App = React.createClass({
         overlay: {
           color1: {
             stop: { $set: num }
-          }
+          },
+
         }
       });
       this.setState(newState);
@@ -168,7 +177,8 @@ var App = React.createClass({
         overlay: {
           color2: {
             stop: { $set: num }
-          }
+          },
+
         }
       });
       this.setState(newState);

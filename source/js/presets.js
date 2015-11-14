@@ -1,4 +1,3 @@
-// greetings.js
 var filters = {
   '1977': {
     filter: {
@@ -30,6 +29,26 @@ var filters = {
       },
       color2: {
         color: { a: 0, b: 14, g: 10, r: 66 },
+        stop: 100
+      },
+    }
+  },
+  'brooklyn': {
+    filter: {
+      contrast: '90',
+      brightness: '110',
+      blend: 'overlay'
+    },
+    overlay: {
+      type: 'radial',
+      position: 'center center',
+      size: 'closest-corner',
+      color1: {
+        color: { a: 0.4, b: 193, g: 223, r: 168 },
+        stop: 1
+      },
+      color2: {
+        color: { a: 0.2, b: 200, g: 196, r: 183 },
         stop: 100
       },
     }
