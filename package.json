@@ -5,6 +5,7 @@
   "main": "build/index.html",
   "devDependencies": {
     "autoprefixer": "^6.1.0",
+    "classnames": "^2.2.0",
     "cssnano": "^3.3.2",
     "eslint": "^1.9.0",
     "eslint-plugin-react": "^3.7.1",

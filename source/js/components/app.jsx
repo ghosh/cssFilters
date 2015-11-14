@@ -2,10 +2,14 @@ var React = require('React');
 var Update = require('react-addons-update');
 var Sidebar = require('./layout/sidebar.jsx');
 var Main = require('./layout/main.jsx');
+var Gallery = require('./layout/gallery.jsx');
 
 var App = React.createClass({
     getInitialState: function() {
       return {
+        gallery: {
+          visible: false
+        },
         filter: {
           contrast: '100',
           brightness: '100',
@@ -34,6 +38,15 @@ var App = React.createClass({
           }
         }
       }
+    },
+
+    toggleGallery: function(event) {
+      var newState = Update(this.state, {
+        gallery: {
+          visible: { $set: !this.state.gallery.visible }
+        }
+      });
+      this.setState(newState);
     },
 
     handeUpdate: function(event) {
@@ -160,10 +173,15 @@ var App = React.createClass({
     render: function() {
         return (
           <section className="wrap">
-            <Main
-              overlay={this.state.overlay}
-              filter={this.state.filter}
-            />
+            <div className="wrap-minor">
+              <Main
+                overlay={this.state.overlay}
+                filter={this.state.filter}
+                gallery={this.state.gallery}
+                toggleGallery={this.toggleGallery}
+              />
+              <Gallery gallery={this.state.gallery} />
+            </div>
             <Sidebar
               ref="sidebar"
               overlay={this.state.overlay}

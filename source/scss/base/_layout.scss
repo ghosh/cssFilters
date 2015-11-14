@@ -15,6 +15,12 @@
   width: 100%;
 }
 
+.wrap-minor {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 .main {
   // align-items: center;
   background: c('base', 'main-bg');
