@@ -184,6 +184,13 @@ $control-color: #898989;
   padding: 5px;
   padding-bottom: 0;
 
+  &.is-active {
+    border: solid 1px c('base', 'link-color');
+    .thumb__label {
+      color: #fff;
+    }
+  }
+
   &__figure {
     height: 75px;
     position: relative;

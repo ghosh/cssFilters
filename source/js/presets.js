@@ -30,7 +30,7 @@ var filters = {
       color2: {
         color: { a: 0, b: 14, g: 10, r: 66 },
         stop: 100
-      },
+      }
     }
   },
   'brooklyn': {
@@ -50,7 +50,7 @@ var filters = {
       color2: {
         color: { a: 0.2, b: 200, g: 196, r: 183 },
         stop: 100
-      },
+      }
     }
   }
 };

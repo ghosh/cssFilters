@@ -21,9 +21,9 @@ var Gallery = React.createClass({
       Object.keys(presets).forEach(function(key) {
         var name = key;
         var object = presets[key];
-
         var thumbClass = classNames({
           'thumb': true,
+          'is-active': (this.props.preset == key) ? true : false
         });
 
         var factory = new Factory(object.filter, object.overlay);

@@ -6,11 +6,32 @@ var Gallery = require('./layout/gallery.jsx');
 var Presets = require('../presets');
 
 var App = React.createClass({
+
+
+    _extend: function(obj1, obj2){
+        var obj3 = {};
+        for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+        for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+        return obj3;
+    },
+
+    _init: {},
+
+    _cloneInitialState: (function() {
+      var executed = false;
+      return function () {
+          if (!executed) {
+              executed = true;
+              this._init = this.state;
+          }
+      };
+    }.bind(this))(),
+
     getInitialState: function() {
       return {
         'preset': 'custom',
         gallery: {
-          visible: false
+          visible: true
         },
         filter: {
           contrast: '100',
@@ -52,10 +73,13 @@ var App = React.createClass({
     },
 
     updatePreset: function(key) {
+      var Filter = this._extend(this._init.filter, Presets[key].filter);
+      var Overlay = this._extend(this._init.overlay, Presets[key].overlay);
+
       var newState = Update(this.state, {
-        preset: { $set: key },
-        filter: { $set: Presets[key].filter },
-        overlay: { $set: Presets[key].overlay }
+        preset: {$set: key},
+        filter: {$set: Filter},
+        overlay: {$set: Overlay}
       });
       this.setState(newState);
     },
@@ -73,7 +97,8 @@ var App = React.createClass({
           blur: this.refs.sidebar.refs.blur.refs.range.value,
           opacity: this.refs.sidebar.refs.opacity.refs.range.value,
           blend: this.refs.sidebar.refs.blend.refs.select.value
-        }
+        },
+        preset: 'custom'
       });
     },
 
@@ -82,14 +107,16 @@ var App = React.createClass({
         var newState = Update(this.state, {
           overlay: {
             direction: { $set: this.refs.sidebar.refs.background.refs.gradientsDirection.refs.direction.value }
-          }
+          },
+          preset: { $set: 'custom' }
         });
       } else if ( this.refs.sidebar.refs.background.refs.gradientsPosition != undefined ) {
         var newState = Update(this.state, {
           overlay: {
             position: { $set: this.refs.sidebar.refs.background.refs.gradientsPosition.refs.position.value },
             size: { $set: this.refs.sidebar.refs.background.refs.gradientsSize.refs.size.value }
-          }
+          },
+          preset: { $set: 'custom' }
         });
       }
       this.setState(newState);
@@ -99,7 +126,8 @@ var App = React.createClass({
       var newState = Update(this.state, {
         overlay: {
           type: { $set: event.currentTarget.value }
-        }
+        },
+        preset: { $set: 'custom' }
       });
       this.setState(newState);
     },
@@ -108,7 +136,8 @@ var App = React.createClass({
       var newState = Update(this.state, {
         overlay: {
           color: { $set: color.rgb }
-        }
+        },
+        preset: { $set: 'custom' }
       });
       this.setState(newState);
     },
@@ -119,7 +148,8 @@ var App = React.createClass({
           color1: {
             color: { $set: color.rgb }
           }
-        }
+        },
+        preset: { $set: 'custom' }
       });
       this.setState(newState);
     },
@@ -131,7 +161,7 @@ var App = React.createClass({
             color: { $set: color.rgb }
           }
         },
-
+        preset: { $set: 'custom' }
       });
       this.setState(newState);
     },
@@ -152,9 +182,9 @@ var App = React.createClass({
         overlay: {
           color1: {
             stop: { $set: num }
-          },
-
-        }
+          }
+        },
+        preset: { $set: 'custom' }
       });
       this.setState(newState);
     },
@@ -177,16 +207,18 @@ var App = React.createClass({
         overlay: {
           color2: {
             stop: { $set: num }
-          },
-
-        }
+          }
+        },
+        preset: { $set: 'custom' }
       });
       this.setState(newState);
     },
 
     render: function() {
+        this._cloneInitialState();
+
         return (
-          <section className="wrap">
+          <section className="wrap" key={this.state.timestamp}>
             <div className="wrap-minor">
               <Main
                 overlay={this.state.overlay}
@@ -195,6 +227,7 @@ var App = React.createClass({
                 toggleGallery={this.toggleGallery}
               />
               <Gallery
+                preset={this.state.preset}
                 gallery={this.state.gallery}
                 updatePreset={this.updatePreset}
               />
