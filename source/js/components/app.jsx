@@ -43,7 +43,7 @@ var App = React.createClass({
           hueRotate: '0',
           blur: '0',
           opacity: '50',   // <-- Move to overlay
-          blend: 'overlay' // <-- Move to overlay
+          blend: 'normal' // <-- Move to overlay
         },
         overlay: {
           type: 'solid',
