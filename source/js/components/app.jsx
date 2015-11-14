@@ -49,6 +49,10 @@ var App = React.createClass({
       this.setState(newState);
     },
 
+    updatePreset: function() {
+      console.log('Enabling Preset');
+    },
+
     handeUpdate: function(event) {
       this.setState({
         filter: {
@@ -180,7 +184,10 @@ var App = React.createClass({
                 gallery={this.state.gallery}
                 toggleGallery={this.toggleGallery}
               />
-              <Gallery gallery={this.state.gallery} />
+              <Gallery
+                gallery={this.state.gallery}
+                updatePreset={this.updatePreset}
+              />
             </div>
             <Sidebar
               ref="sidebar"

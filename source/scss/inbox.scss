@@ -147,7 +147,7 @@ $control-color: #898989;
   background-color: c('base', 'tab-bg-color');
   flex-basis: 0;
   overflow: scroll;
-  transition: all .3s ease-in-out 0s;
+  transition: all .35s cubic-bezier(.42, 0, .42, .86) 0s;
 
   &.is-active {
     flex-basis: 148px;
@@ -157,6 +157,7 @@ $control-color: #898989;
     @include centerer(true, false);
     bottom: 10px;
     color: c('base', 'link-color');
+    cursor: pointer;
     font-size: 13px;
     position: absolute;
   }

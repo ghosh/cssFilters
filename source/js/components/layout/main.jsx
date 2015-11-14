@@ -13,9 +13,9 @@ var Main = React.createClass({
       return (
         <main className="main">
           <Photo overlay={this.props.overlay} filter={this.props.filter} />
-          <a href="#" className="gallery__trigger" onClick={this.props.toggleGallery}>
+          <p className="gallery__trigger" onClick={this.props.toggleGallery}>
             {galleryTriggerText}
-          </a>
+          </p>
         </main>
       )
     }
