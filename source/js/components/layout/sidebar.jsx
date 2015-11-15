@@ -21,9 +21,6 @@ var Sidebar = React.createClass({
                <p className="tabs__label">Generator</p>
              </Tab>
              <Tab className="tabs__item">
-               <p className="tabs__label">Presets</p>
-             </Tab>
-             <Tab className="tabs__item">
                <p className="tabs__label">CSS Code</p>
              </Tab>
            </TabList>
@@ -56,9 +53,6 @@ var Sidebar = React.createClass({
               <RangeSlider ref="opacity" label="Opacity" value={this.props.filter.opacity} min="0" max="100" unit="%" handeUpdate={this.props.handeUpdate}/>
 
 
-            </TabPanel>
-            <TabPanel className="tabs__content">
-              <div className="h1">Presets</div>
             </TabPanel>
             <TabPanel className="tabs__content">
               <CodeBlock filter={this.props.filter} />
