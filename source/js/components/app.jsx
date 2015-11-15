@@ -9,7 +9,7 @@ var App = React.createClass({
 
     getInitialState: function() {
       return {
-        'preset': 'custom',
+        preset: 'custom',
         gallery: {
           visible: false
         },

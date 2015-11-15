@@ -4,9 +4,7 @@ var Factory = require('../factory');
 var Photo = React.createClass({
     render: function() {
 
-      var img = 'http://i1.wp.com/photos.oliur.com/wp-content/uploads/2015/09/Workspace-Top-Down-View-with-MacBook-Pro.jpg?resize=1200%2C801';
-
-      // var img = 'https://source.unsplash.com/W_9mOGUwR08/800x600';
+      var img = 'https://source.unsplash.com/W_9mOGUwR08/800x600';
 
       var factory = new Factory(this.props.filter, this.props.overlay);
       var overlay = factory.getOverlayStyles();
