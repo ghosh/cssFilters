@@ -5,8 +5,6 @@
 
 @import '../../bower_components/sanitize-css/dist/sanitize';
 @import '../../bower_components/stylekit/stylekit';
-@import '../../bower_components/cssgram/source/css/cssgram';
-
 
 @import 'base/layout';
 @import 'base/typography';
@@ -243,5 +241,28 @@ $control-color: #898989;
     color: c('base', 'header-text-color');
     float: right;
     margin-top: 15px;
+  }
+
+  &__body {
+    @include clearfix();
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    height: 450px;
+    // justify-content: space-around;
+    overflow-y: scroll;
+    padding: 20px;
+  }
+
+  &__thumb {
+    border: solid 2px c('base', 'sidebar-bg-start');
+    float: left;
+    height: 90px;
+    width: 120px;
+  }
+
+  &__img {
+    height: 90px;
+    width: 120px;
   }
 }

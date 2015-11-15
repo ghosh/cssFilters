@@ -83,7 +83,7 @@ gulp.task('scripts', function() {
     .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
     .pipe(browserify({ transform: 'reactify', debug: true }))
     .pipe(concat(config.scripts.distFile))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest(config.scripts.distDirectory))
     .pipe(connect.reload());
   gutil.log(gutil.colors.grey('---------------------------------------'));

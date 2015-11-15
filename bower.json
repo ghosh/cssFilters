@@ -1,0 +1,20 @@
+{
+  "name": "cssFilters",
+  "version": "1.0.0",
+  "authors": [
+    "Indrashish <mail@indrashishghosh.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "stylekit": "*",
+    "fetch": "~0.10.1",
+    "sanitize-css": "~3.0.0"
+  }
+}

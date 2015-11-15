@@ -1,18 +1,33 @@
 var React = require('React');
 var ReactModal = require('react-modal');
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
 var Modal = React.createClass({
 
   componentDidMount: function() {
-    $.get(this.props.source, function(result) {
-      var lastGist = result[0];
-      if (this.isMounted()) {
-        this.setState({
-          username: lastGist.owner.login,
-          lastGistUrl: lastGist.html_url
-        });
+
+
+    var url = 'https://api.unsplash.com/photos/?per_page=50&client_id=86f6167ee81be7b8aea6aa0d999c1bae79b3351b43e8df03c8baaa9c630f24ba';
+    // var url = 'https://api.unsplash.com/photos';
+    var config = {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Client-ID 86f6167ee81be7b8aea6aa0d999c1bae79b3351b43e8df03c8baaa9c630f24ba'
       }
-    }.bind(this));
+    }
+    fetch(url)
+      .then(function(res) {
+          return res.json();
+      }).then(function(json) {
+        if (this.isMounted()) {
+          this.setState({
+            images: json
+          });
+        }
+      }.bind(this));
+
   },
 
   getInitialState: function() {
@@ -28,6 +43,16 @@ var Modal = React.createClass({
   },
 
   render: function() {
+
+    if (this.state.images) {
+      var images = this.state.images.map(function(image, index){
+        return (
+          <figure className="modal__thumb" key={index}>
+            <img className="modal__img" src={image.urls.thumb} alt="" />
+          </figure>
+        );
+      });
+    }
 
     var modalStyles = {
       content : {
@@ -57,6 +82,9 @@ var Modal = React.createClass({
               Select an image
             </h4>
             <a href="#" className="modal__close icon-close" onClick={this.closeModal}></a>
+          </div>
+          <div className="modal__body">
+            {images}
           </div>
         </ReactModal>
       </div>
