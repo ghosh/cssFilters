@@ -7,31 +7,11 @@ var Presets = require('../presets');
 
 var App = React.createClass({
 
-
-    _extend: function(obj1, obj2){
-        var obj3 = {};
-        for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
-        for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
-        return obj3;
-    },
-
-    _init: {},
-
-    _cloneInitialState: (function() {
-      var executed = false;
-      return function () {
-          if (!executed) {
-              executed = true;
-              this._init = this.state;
-          }
-      };
-    }.bind(this))(),
-
     getInitialState: function() {
       return {
         'preset': 'custom',
         gallery: {
-          visible: true
+          visible: false
         },
         filter: {
           contrast: '100',
@@ -62,6 +42,25 @@ var App = React.createClass({
         }
       }
     },
+
+    _extend: function(obj1, obj2){
+        var obj3 = {};
+        for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+        for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+        return obj3;
+    },
+
+    _init: {},
+
+    _cloneInitialState: (function() {
+      var executed = false;
+      return function () {
+          if (!executed) {
+              executed = true;
+              this._init = this.state;
+          }
+      };
+    }.bind(this))(),
 
     toggleGallery: function(event) {
       var newState = Update(this.state, {
