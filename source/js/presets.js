@@ -60,7 +60,7 @@ var filters = {
       contrast: '90',
       sepia: '20',
       blend: 'overlay',
-      opacity: '100',
+      opacity: '100'
     },
     overlay: {
       type: 'radial',
@@ -79,7 +79,7 @@ var filters = {
       brightness: '105',
       hueRotate: '350',
       blend: 'darken',
-      opacity: '100',
+      opacity: '100'
     },
     overlay: {
       type: 'linear',
@@ -99,7 +99,7 @@ var filters = {
       contrast: '90',
       sepia: '20',
       blend: 'overlay',
-      opacity: '100',
+      opacity: '100'
     },
     overlay: {
       type: 'radial',
@@ -119,7 +119,7 @@ var filters = {
       contrast: '90',
       saturate: '110',
       blend: 'multiply',
-      opacity: '50',
+      opacity: '50'
     },
     overlay: {
       type: 'radial',
@@ -139,11 +139,11 @@ var filters = {
       contrast: '110',
       brightness: '110',
       grayscale: '100',
-      opacity: '100',
+      opacity: '100'
     },
     overlay: {
       type: 'solid',
-      color: { a: 0, b: 0, g: 0, r: 0 },
+      color: { a: 0, b: 0, g: 0, r: 0 }
     }
   },
   'lofi': {
@@ -194,7 +194,7 @@ var filters = {
     },
     overlay: {
       type: 'solid',
-      color: { a: 1, b: 239, g: 205, r: 173 },
+      color: { a: 1, b: 239, g: 205, r: 173 }
     }
   },
   'toaster': {
@@ -227,7 +227,7 @@ var filters = {
     },
     overlay: {
       type: 'solid',
-      color: { a: 1, b: 0, g: 68, r: 204 },
+      color: { a: 1, b: 0, g: 68, r: 204 }
     }
   },
   'xpro2': {

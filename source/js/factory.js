@@ -56,7 +56,7 @@ Factory.prototype.getOverlayStyles = function getOverlayStyles() {
       var background = 'linear-gradient( '+direction+', '+color1+' '+color1Stop+'%, '+color2+' '+color2Stop+'% )';
       break;
     case 'radial':
-      var background = '-webkit-radial-gradient('+position+', ellipse '+size+', '+color1+' '+color1Stop+'%, '+color2+' '+color2Stop+'% )';
+      var background = '-webkit-radial-gradient('+position+', circle '+size+', '+color1+' '+color1Stop+'%, '+color2+' '+color2Stop+'% )';
       break;
     default:
   }

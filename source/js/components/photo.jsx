@@ -7,7 +7,6 @@ var Photo = React.createClass({
       var factory = new Factory(this.props.filter, this.props.overlay);
       var overlay = factory.getOverlayStyles();
       var filter = factory.getFilterStyles();
-
       return (
         <div className="photo">
           <figure style={filter}>

@@ -186,9 +186,6 @@ $control-color: #898989;
 
   &.is-active {
     border: solid 1px c('base', 'link-color');
-    .thumb__label {
-      color: #fff;
-    }
   }
 
   &__figure {
