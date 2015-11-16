@@ -30,12 +30,14 @@ var Gallery = React.createClass({
         var overlay = factory.getOverlayStyles();
         var filter = factory.getFilterStyles();
 
+        var image = 'https://source.unsplash.com/'+this.props.image.unsplashID+'/100x75';
+
         thumbs.push(
           <li className="gallery__item" key={name} onClick={this.enablePreset.bind(this, name)}>
             <div className={thumbClass}>
               <figure className="thumb__figure" style={filter}>
                 <div style={overlay} />
-                <img src="https://source.unsplash.com/W_9mOGUwR08/100x75" alt="" className="thumb__img" />
+                <img src={image} alt="" className="thumb__img" />
               </figure>
               <p className="thumb__label">
                 {name.replace(/^./, name[0].toUpperCase())}

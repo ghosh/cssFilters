@@ -14,8 +14,8 @@ var Main = React.createClass({
 
     return (
       <main className="main">
-        <Modal />
-        <Photo overlay={this.props.overlay} filter={this.props.filter} />
+        <Modal updateMainImage={this.props.updateMainImage} />
+        <Photo overlay={this.props.overlay} filter={this.props.filter} image={this.props.image}/>
         <p className="gallery__trigger" onClick={this.props.toggleGallery}>{galleryTriggerText}</p>
       </main>
     )

@@ -256,6 +256,7 @@ $control-color: #898989;
 
   &__thumb {
     border: solid 2px c('base', 'sidebar-bg-start');
+    cursor: pointer;
     float: left;
     height: 90px;
     width: 120px;
