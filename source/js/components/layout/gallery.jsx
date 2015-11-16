@@ -1,5 +1,5 @@
 var React = require('React');
-var Factory = require('../../factory');
+var FilterFactory = require('../../factory');
 var presets = require('../../presets');
 var classNames = require('classnames');
 
@@ -26,7 +26,7 @@ var Gallery = React.createClass({
           'is-active': (this.props.preset == key) ? true : false
         });
 
-        var factory = new Factory(object.filter, object.overlay);
+        var factory = new FilterFactory(object.filter, object.overlay);
         var overlay = factory.getOverlayStyles();
         var filter = factory.getFilterStyles();
 

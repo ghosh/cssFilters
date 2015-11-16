@@ -1,5 +1,5 @@
 var React = require('React');
-var Factory = require('../factory');
+var FilterFactory = require('../factory');
 var ImageLoader = require('react-imageloader');
 
 var Photo = React.createClass({
@@ -10,14 +10,18 @@ var Photo = React.createClass({
     }
   },
 
-  photoLoaded: function() {
-    this.setState({photoLoaded: true});
-  },
-
   shouldComponentUpdate: function(nextProps, nextState){
     return this.props.overlay !== nextProps.overlay ||
              this.props.filter !== nextProps.filter ||
              this.props.image !== nextProps.image;
+  },
+
+  componentWillUpdate: function() {
+    this.setState({photoLoaded: false});
+  },
+
+  photoLoaded: function() {
+    this.setState({photoLoaded: true});
   },
 
   preloader: function () {
@@ -28,9 +32,15 @@ var Photo = React.createClass({
 
     var img = 'https://source.unsplash.com/'+this.props.image.unsplashID+'/800x600';
 
-    var factory = new Factory(this.props.filter, this.props.overlay);
+    var factory = new FilterFactory(this.props.filter, this.props.overlay);
     var overlay = factory.getOverlayStyles();
     var filter = factory.getFilterStyles();
+
+    // Hides the overlay div to prevent bleeding filter colors on the spinnner
+    if (this.state.photoLoaded == false) {
+      overlay.display = 'none';
+    }
+
     return (
       <div className="photo">
         <figure style={filter}>
