@@ -35,6 +35,10 @@ var Modal = React.createClass({
 
   },
 
+  shouldComponentUpdate: function(nextProps, nextState){
+      return this.state !== nextState;
+  },
+
   render: function() {
 
     if (this.state.images) {
