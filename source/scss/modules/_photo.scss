@@ -1,4 +1,8 @@
 .photo {
+  &__spinner {
+    z-index: 999;
+  }
+
   &__img {
     img {
       height: auto;

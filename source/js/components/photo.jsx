@@ -4,6 +4,16 @@ var ImageLoader = require('react-imageloader');
 
 var Photo = React.createClass({
 
+  getInitialState: function() {
+    return {
+      photoLoaded: false
+    }
+  },
+
+  photoLoaded: function() {
+    this.setState({photoLoaded: true});
+  },
+
   shouldComponentUpdate: function(nextProps, nextState){
     return this.props.overlay !== nextProps.overlay ||
              this.props.filter !== nextProps.filter ||
@@ -11,7 +21,7 @@ var Photo = React.createClass({
   },
 
   preloader: function () {
-    return <img src="/images/spinner.gif" />;
+    return <img className="photo__spinner" src="/images/spinner.gif" />;
   },
 
   render: function() {
@@ -24,9 +34,8 @@ var Photo = React.createClass({
     return (
       <div className="photo">
         <figure style={filter}>
-          <div style={overlay} />
-          <ImageLoader src={img} className="photo__img" wrapper={React.DOM.div} preloader={this.preloader}> </ImageLoader>
-
+          <div style={overlay}/>
+          <ImageLoader src={img} className="photo__img" wrapper={React.DOM.div} preloader={this.preloader} onLoad={this.photoLoaded}></ImageLoader>
         </figure>
       </div>
     );
