@@ -1,4 +1,6 @@
 .photo {
+  overflow: hidden;
+
   &__spinner {
     z-index: 999;
   }

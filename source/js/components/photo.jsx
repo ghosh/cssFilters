@@ -40,12 +40,6 @@ var Photo = React.createClass({
     var filter = factory.getFilterStyles();
 
     // Hides the overlay div to prevent bleeding filter colors on the spinnner
-    // if (this.state.photoLoaded == false) {
-    //   overlay.display = 'none';
-    // } else {
-    //   overlay.display = 'block';
-    // }
-
     overlay.display = (this.state.photoLoaded == false) ? 'none' : 'block' ;
 
     return (
