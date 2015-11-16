@@ -1,5 +1,6 @@
 var React = require('React');
 var Factory = require('../factory');
+var ImageLoader = require('react-imageloader');
 
 var Photo = React.createClass({
 
@@ -7,6 +8,10 @@ var Photo = React.createClass({
     return this.props.overlay !== nextProps.overlay ||
              this.props.filter !== nextProps.filter ||
              this.props.image !== nextProps.image;
+  },
+
+  preloader: function () {
+    return <img src="/images/spinner.gif" />;
   },
 
   render: function() {
@@ -20,7 +25,8 @@ var Photo = React.createClass({
       <div className="photo">
         <figure style={filter}>
           <div style={overlay} />
-          <img src={img} alt="" className="photo__img" />
+          <ImageLoader src={img} className="photo__img" wrapper={React.DOM.div} preloader={this.preloader}> </ImageLoader>
+
         </figure>
       </div>
     );

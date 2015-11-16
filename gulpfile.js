@@ -5,6 +5,7 @@ var autoprefixer = require('autoprefixer');
 var cssnano = require('cssnano');
 var browserify = require('gulp-browserify');
 var uglify = require('gulp-uglify');
+var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
@@ -91,6 +92,20 @@ gulp.task('scripts', function() {
   gutil.log(gutil.colors.grey('---------------------------------------'));
 });
 
+
+// ----------------------------------------------------------------------------
+// Images - Optimizes jpg, png, gif, svg
+// ----------------------------------------------------------------------------
+gulp.task('images', function() {
+  return gulp.src('source/images/**/*')
+    .pipe(imagemin({
+        interlaced: true
+    }))
+    .pipe(gulp.dest('build/images'))
+    .pipe(connect.reload());
+});
+
+
 // ----------------------------------------------------------------------------
 // Markup - Copies the only html file from source to build folder
 // ----------------------------------------------------------------------------
@@ -160,6 +175,7 @@ gulp.task('watch', function() {
   gulp.watch(config.styles.srcDirectory + '**/*.*', ['styles']);
   gulp.watch([config.scripts.srcDirectory + '**/*.*', 'gulpfile.js'], ['scripts']);
   gulp.watch(config.markup.srcDirectory+'**/*.html', ['copy']);
+  gulp.watch('source/images/**.*', ['images']);
   gutil.log(gutil.colors.grey('---------------------------------------'));
   gutil.log(gutil.colors.yellow('Reactor:'), gutil.colors.green('Watching for changes'));
   gutil.log(gutil.colors.grey('---------------------------------------'));
