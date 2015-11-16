@@ -13,11 +13,14 @@ var Photo = React.createClass({
   shouldComponentUpdate: function(nextProps, nextState){
     return this.props.overlay !== nextProps.overlay ||
              this.props.filter !== nextProps.filter ||
-             this.props.image !== nextProps.image;
+             this.props.image !== nextProps.image ||
+             this.state != nextState;
   },
 
-  componentWillUpdate: function() {
-    this.setState({photoLoaded: false});
+  componentWillReceiveProps: function(nextProps) {
+    if (this.props.image != nextProps.image) {
+      this.setState({photoLoaded: false});
+    }
   },
 
   photoLoaded: function() {
@@ -37,9 +40,13 @@ var Photo = React.createClass({
     var filter = factory.getFilterStyles();
 
     // Hides the overlay div to prevent bleeding filter colors on the spinnner
-    if (this.state.photoLoaded == false) {
-      overlay.display = 'none';
-    }
+    // if (this.state.photoLoaded == false) {
+    //   overlay.display = 'none';
+    // } else {
+    //   overlay.display = 'block';
+    // }
+
+    overlay.display = (this.state.photoLoaded == false) ? 'none' : 'block' ;
 
     return (
       <div className="photo">
