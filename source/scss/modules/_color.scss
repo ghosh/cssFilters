@@ -1,0 +1,53 @@
+$swatch-border: #424242;
+
+.color {
+  display: flex;
+  margin-bottom: 15px;
+
+  &__box {
+    @include clearfix();
+    flex-basis: 50%;
+    position: relative;
+  }
+
+  &__stop {
+    @include clearfix();
+    flex-basis: 50%;
+  }
+
+  &__text {
+    color: c('base', 'slider-label-color');
+    float: left;
+    font-size: 12px;
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+
+  &__swatch {
+    border: solid 1px $swatch-border;
+    border-radius: 1px;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    padding: 5px;
+  }
+
+  &__preview {
+    border-radius: 2px;
+    height: 14px;
+    width: 36px;
+  }
+
+  &__stop-number {
+    float: left;
+  }
+
+  &__stop-label {
+    color: c('base', 'slider-label-color');
+    float: left;
+    font-size: 12px;
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+
+}

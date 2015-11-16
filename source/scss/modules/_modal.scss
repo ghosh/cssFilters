@@ -1,0 +1,62 @@
+// scss-lint:disable ImportantRule
+.modal {
+  padding: 0 !important;
+
+  &__trigger {
+    color: c('base', 'link-color');
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    padding-left: 0;
+    position: relative;
+
+    i {
+      font-size: 120%;
+      margin-top: -1px;
+      position: absolute;
+    }
+
+    span {
+      padding-left: 22px;
+    }
+  }
+
+  &__header {
+    @include clearfix();
+    background: linear-gradient(to bottom, c('base', 'header-bg-start'), c('base', 'header-bg-end'));
+    height: 50px;
+    padding: 0 20px;
+  }
+
+  &__title {
+    color: c('base', 'header-text-color');
+    float: left;
+    line-height: 50px;
+  }
+
+  &__close {
+    color: c('base', 'header-text-color');
+    float: right;
+    margin-top: 15px;
+  }
+
+  &__body {
+    @include clearfix();
+    height: 450px;
+    overflow-y: scroll;
+    padding: 20px;
+  }
+
+  &__thumb {
+    border: solid 2px c('base', 'sidebar-bg-start');
+    cursor: pointer;
+    float: left;
+    height: 90px;
+    width: 120px;
+  }
+
+  &__img {
+    height: 90px;
+    width: 120px;
+  }
+}

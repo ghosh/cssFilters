@@ -1,0 +1,32 @@
+$control-color: #898989;
+
+.number {
+  @include clearfix();
+  position: relative;
+  width: 100px;
+
+  &__input {
+    background-color: c('base', 'tab-bg-color');
+    color: c('base', 'slider-label-color');
+    float: left;
+    font-size: 12px;
+    height: 30px;
+    outline: 0;
+    padding: 4px 8px 6px 10px;
+    width: 50%;
+  }
+
+  &__up,
+  &__down {
+    background-color: lighten(c('base', 'tab-bg-color'), 10%);
+    color: $control-color;
+    cursor: pointer;
+    float: left;
+    height: 30px;
+    padding-top: 2px;
+    text-align: center;
+    user-select: none;
+    width: 20%;
+  }
+
+}
