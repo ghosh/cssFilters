@@ -67,13 +67,28 @@ var App = React.createClass({
   },
 
   updateMainImage: function(type, val) {
-    var newState = Update(this.state, {
-      image: {
-        type: { $set: 'unsplash' },
-        unsplashID: { $set: val }
-      }
-    });
-    this.setState(newState);
+    switch (type) {
+      case 'unsplash':
+          var newState = Update(this.state, {
+            image: {
+              type: { $set: 'unsplash' },
+              unsplashID: { $set: val }
+            }
+          });
+          this.setState(newState);
+        break;
+      case 'upload':
+      var newState = Update(this.state, {
+        image: {
+          type: { $set: 'upload' },
+          source: { $set: val }
+        }
+      });
+
+      default:
+        this.setState(newState);
+        break;
+    }
   },
 
   toggleGallery: function(event) {

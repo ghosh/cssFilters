@@ -1,6 +1,7 @@
 var React = require('React');
 var Photo = require('../photo.jsx');
-var Modal = require('../unsplashmodal.jsx');
+var UnsplashModal = require('../unsplashmodal.jsx');
+var UploadModal = require('../uploadmodal.jsx');
 
 
 var Main = React.createClass({
@@ -14,7 +15,8 @@ var Main = React.createClass({
 
     return (
       <main className="main">
-        <Modal updateMainImage={this.props.updateMainImage} />
+        <UnsplashModal updateMainImage={this.props.updateMainImage} />
+        <UploadModal updateMainImage={this.props.updateMainImage} />
         <Photo overlay={this.props.overlay} filter={this.props.filter} image={this.props.image}/>
         <p className="gallery__trigger" onClick={this.props.toggleGallery}>{galleryTriggerText}</p>
       </main>

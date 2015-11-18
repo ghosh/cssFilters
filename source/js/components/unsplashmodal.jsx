@@ -17,7 +17,7 @@ var UnsplashModal = React.createClass({
     this.setState({modalIsOpen: false});
   },
 
-  setUnsplashImage: function(id, event) {
+  setMainImage: function(id, event) {
     this.props.updateMainImage('unsplash', id);
     this.setState({modalIsOpen: false});
   },
@@ -44,7 +44,7 @@ var UnsplashModal = React.createClass({
     if (this.state.images) {
       var images = this.state.images.map(function(image, index){
         return (
-          <figure className="modal__thumb" key={index} onClick={this.setUnsplashImage.bind(this, image.id)}>
+          <figure className="modal__thumb" key={index} onClick={this.setMainImage.bind(this, image.id)}>
             <img className="modal__img" src={image.urls.thumb} alt="" />
           </figure>
         );

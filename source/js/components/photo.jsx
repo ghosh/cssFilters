@@ -33,7 +33,12 @@ var Photo = React.createClass({
 
   render: function() {
 
-    var img = 'https://source.unsplash.com/'+this.props.image.unsplashID+'/800x600';
+    if (this.props.image.type == 'unsplash') {
+      var img = 'https://source.unsplash.com/'+this.props.image.unsplashID+'/800x600';
+    } else if (this.props.image.type == 'upload') {
+      var img = this.props.image.source;
+    }
+
 
     var factory = new FilterFactory(this.props.filter, this.props.overlay);
     var overlay = factory.getOverlayStyles();
