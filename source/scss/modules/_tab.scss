@@ -63,10 +63,11 @@
   border: none !important;
   border-bottom: solid 1px transparent !important;
   display: flex !important;
+  user-select: none !important;
 }
 
-.react-tabs [role=tablist]:focus {
-  border: none !important;
+.react-tabs [role=tab]:focus {
+  border-color: transparent !important;
   box-shadow: none !important;
 }
 

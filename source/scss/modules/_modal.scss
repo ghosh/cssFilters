@@ -2,6 +2,17 @@
 .modal {
   padding: 0 !important;
 
+  &__trigger-cont {
+    @include clearfix();
+    div {
+      float: left;
+    }
+
+    div:last-child {
+      margin-left: 10px;
+    }
+  }
+
   &__trigger {
     color: c('base', 'link-color');
     cursor: pointer;

@@ -19,7 +19,6 @@ var UploadModal = React.createClass({
     this.setState({
       files: files
     });
-    console.log('Received files: ', files);
     this.setMainImage(files[0].preview);
     this.closeModal();
   },
