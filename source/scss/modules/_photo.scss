@@ -1,6 +1,6 @@
 .photo {
   max-height: 85%;
-  overflow: hidden;
+  overflow: scroll;
 
   &__spinner {
     z-index: 999;

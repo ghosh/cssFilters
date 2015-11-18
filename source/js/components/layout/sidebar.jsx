@@ -11,11 +11,23 @@ var TabPanel = ReactTabs.TabPanel;
 
 var Sidebar = React.createClass({
 
+  getInitialState: function() {
+    return {
+      selectedIndex: 0
+    }
+  },
+
+  handleSelected: function (index, last) {
+    this.setState({
+      selectedIndex: index
+    });
+  },
+
     render: function () {
 
       return (
         <aside className="sidebar">
-          <Tabs className="tabs" onSelect={this.handleSelected} selectedIndex={0} >
+          <Tabs className="tabs" onSelect={this.handleSelected} selectedIndex={this.state.selectedIndex} >
            <TabList className="tabs__headers">
              <Tab className="tabs__item">
                <p className="tabs__label">Generator</p>
