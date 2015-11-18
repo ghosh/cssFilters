@@ -1,6 +1,6 @@
 var React = require('React');
 var Photo = require('../photo.jsx');
-var Modal = require('./modal.jsx');
+var Modal = require('../unsplashmodal.jsx');
 
 
 var Main = React.createClass({

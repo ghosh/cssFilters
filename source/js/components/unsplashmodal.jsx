@@ -3,7 +3,7 @@ var ReactModal = require('react-modal');
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
-var Modal = React.createClass({
+var UnsplashModal = React.createClass({
 
   getInitialState: function() {
     return { modalIsOpen: false };
@@ -89,4 +89,4 @@ var Modal = React.createClass({
   }
 });
 
-module.exports = Modal;
+module.exports = UnsplashModal;
