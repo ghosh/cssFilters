@@ -11,7 +11,13 @@
 
   &__logo {
     color: c('base', 'header-text-color');
+    float: left;
     font-size: 110px;
     margin-top: -30px;
+  }
+
+  &__share-btns {
+    float: right;
+    margin-top: 20px;
   }
 }

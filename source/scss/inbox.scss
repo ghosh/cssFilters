@@ -20,6 +20,8 @@
 @import 'modules/gallery';
 @import 'modules/modal';
 
+@import 'vendor/social';
+
 pre {
   background-color: c('base', 'tab-bg-color');
   color: c('base', 'slider-label-color');
