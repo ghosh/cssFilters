@@ -1,7 +1,6 @@
 var React = require('React');
 var ReactModal = require('react-modal');
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
+var $ = require('../vendor/jquery');
 
 var UnsplashModal = React.createClass({
 
@@ -23,16 +22,10 @@ var UnsplashModal = React.createClass({
   },
 
   componentDidMount: function() {
-
-    fetch('https://api.unsplash.com/photos/?per_page=50&client_id=86f6167ee81be7b8aea6aa0d999c1bae79b3351b43e8df03c8baaa9c630f24ba')
-      .then(function(res) {
-          return res.json();
-      }).then(function(json) {
-        if (this.isMounted()) {
-          this.setState({images: json });
-        }
-      }.bind(this));
-
+    $.getJSON('https://api.unsplash.com/photos/?per_page=50&client_id=86f6167ee81be7b8aea6aa0d999c1bae79b3351b43e8df03c8baaa9c630f24ba')
+    .done(function(data) {
+        this.setState({images: data });
+    }.bind(this));
   },
 
   shouldComponentUpdate: function(nextProps, nextState){
