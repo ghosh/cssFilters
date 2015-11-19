@@ -39,6 +39,7 @@ $shareBorderColor: #cccccc;
 }
 
 .share-title {
+  @include font-smoothing();
   font-weight: 900;
   font-size: 12px;
   padding-right: 10px;
