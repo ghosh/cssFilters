@@ -67,6 +67,13 @@ var Sidebar = React.createClass({
 
             </TabPanel>
             <TabPanel className="tabs__content">
+              <p className="tabs__subheader">Markup</p>
+              <pre><code>
+              &lt;figure class="filter"&gt;<br />
+              &nbsp;&nbsp;&lt;img src="..."&gt;<br />
+              &lt;/figure&gt;
+              </code></pre>
+              <p className="tabs__subheader">CSS</p>
               <CodeBlock filter={this.props.filter} overlay={this.props.overlay}/>
             </TabPanel>
           </Tabs>
