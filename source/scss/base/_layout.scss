@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+body {
+  @include coverer();
+  background-color: c('base', 'main-bg');
+}
+
 .container {
   padding-left: 20px;
   padding-right: 20px;

@@ -74,7 +74,7 @@ $size: 14px;
   }
 
   &:checked + label {
-    color: rgba(255, 255, 255, 1);
+    color: c('base', 'tab-label-color-active');
 
     > i:after {
       background: $rad-color;

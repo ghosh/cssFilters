@@ -4,6 +4,11 @@ $swatch-border: #424242;
   display: flex;
   margin-bottom: 15px;
 
+  &__cont {
+    margin-bottom: 25px;
+    margin-top: 25px;
+  }
+
   &__box {
     @include clearfix();
     flex-basis: 50%;
