@@ -38,7 +38,10 @@ var Sidebar = React.createClass({
            </TabList>
             <TabPanel className="tabs__content">
 
-              <p className="tabs__subheader">Filters</p>
+              <div className="tabs__heading">
+                <p className="tabs__subheader">Filters</p>
+                <span className="tabs__clear" onClick={this.props.resetState}>Clear All</span>
+              </div>
               <RangeSlider ref="contrast" label="Contrast" value={this.props.filter.contrast} min="0" max="200" unit="%" handeUpdate={this.props.handeUpdate}/>
               <RangeSlider ref="brightness" label="Brightness" value={this.props.filter.brightness} min="0" max="200" unit="%" handeUpdate={this.props.handeUpdate}/>
               <RangeSlider ref="saturate" label="Saturate" value={this.props.filter.saturate} min="0" max="200" unit="%" handeUpdate={this.props.handeUpdate}/>
@@ -48,7 +51,10 @@ var Sidebar = React.createClass({
               <RangeSlider ref="hueRotate" label="Hue Rotate" value={this.props.filter.hueRotate} min="0" max="360" unit="deg" handeUpdate={this.props.handeUpdate}/>
               <RangeSlider ref="blur" label="Blur" value={this.props.filter.blur} min="0" max="10" unit="px" handeUpdate={this.props.handeUpdate}/>
 
-              <p className="tabs__subheader">Overlay</p>
+
+              <div className="tabs__heading">
+                <p className="tabs__subheader">Overlay</p>
+              </div>
 
               <Background
                 ref="background"
@@ -67,14 +73,20 @@ var Sidebar = React.createClass({
 
             </TabPanel>
             <TabPanel className="tabs__content">
-              <p className="tabs__subheader">Markup</p>
+
+              <div className="tabs__heading">
+                  <p className="tabs__subheader">CSS</p>
+              </div>
+              <CodeBlock filter={this.props.filter} overlay={this.props.overlay}/>
+
+              <div className="tabs__heading">
+                  <p className="tabs__subheader">Markup</p>
+              </div>
               <pre><code>
               &lt;figure class="filter"&gt;<br />
               &nbsp;&nbsp;&lt;img src="..."&gt;<br />
               &lt;/figure&gt;
               </code></pre>
-              <p className="tabs__subheader">CSS</p>
-              <CodeBlock filter={this.props.filter} overlay={this.props.overlay}/>
             </TabPanel>
           </Tabs>
         </aside>

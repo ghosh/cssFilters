@@ -22,6 +22,25 @@
     }
   }
 
+  &__heading {
+    position: relative;
+    margin-bottom: 20px;
+    margin-top: 50px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__clear {
+    font-size: 13px;
+    right: 0;
+    color: c('base', 'link-color');
+    cursor: pointer;
+    top: 0;
+    position: absolute;
+  }
+
   &__label,
   &__subheader {
     color: c('base', 'tab-label-color');
@@ -34,13 +53,6 @@
 
   &__subheader {
     color: c('base', 'header-text-color');
-    margin-bottom: 20px;
-    margin-top: 50px;
-
-    &:first-child {
-      margin-top: 0;
-    }
-
   }
 
   &__content {

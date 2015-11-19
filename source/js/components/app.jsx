@@ -66,6 +66,15 @@ var App = React.createClass({
     }
   },
 
+  resetState: function() {
+    var newState = Update(this.state, {
+      filter: { $set : this._init.filter},
+      overlay: { $set : this._init.overlay},
+      preset: { $set : 'custom'}
+    })
+    this.setState(newState);
+  },
+
   updateMainImage: function(type, val) {
     switch (type) {
       case 'unsplash':
@@ -267,6 +276,7 @@ var App = React.createClass({
       ref="sidebar"
       overlay={this.state.overlay}
       filter={this.state.filter}
+      resetState={this.resetState}
       updateOverlayColor={this.updateOverlayColor}
       updateColor1={this.updateColor1}
       updateColor1Stop={this.updateColor1Stop}
