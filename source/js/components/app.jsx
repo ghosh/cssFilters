@@ -53,9 +53,9 @@ var App = React.createClass({
         direction: 'to bottom',
         position: 'center center',
         size: 'closest-corner',
-        color: { a: 1, b: 62, g: 142, r: 253 },
+        color: { a: 0.5, b: 253, g: 162, r: 62 },
         color1: {
-          color: { a: 1, b: 35, g: 35, r: 35 },
+          color: { a: 0.5, b: 253, g: 162, r: 62 },
           stop: 10
         },
         color2: {
