@@ -11,6 +11,9 @@ var gulp        = require('gulp'),
     notify      = require('gulp-notify'),
     browserSync = require('browser-sync'),
     gulpif = require('gulp-if'),
+    scsslint = require('gulp-scss-lint'),
+    scssLintStylish = require('gulp-scss-lint-stylish'),
+    cache = require('gulp-cached'),
     argv        = require('yargs').argv,
     reload      = browserSync.reload;
 
@@ -66,10 +69,20 @@ gulp.task('styles', function() {
     .pipe(reload({ stream:true }));
 });
 
+gulp.task('lint:styles', function() {
+  return gulp.src('source/scss/**/*.scss')
+    .pipe(cache('scsslint'))
+    .pipe(scsslint({
+      'config': '.scss-lint.yml',
+      customReport: scssLintStylish
+    }));
+});
 
+
+gulp.task('lint', ['lint:styles'])
 gulp.task('compile', ['styles'])
 
-gulp.task('go', ['compile'],function() {
+gulp.task('go', ['compile', 'lint'],function() {
   browserSync({
     server: {
       baseDir: 'build'
@@ -80,5 +93,5 @@ gulp.task('go', ['compile'],function() {
   // gulp.watch('source/**/*.hbs', ['hbs']);
   // gulp.watch('source/assets/svg/**/*.svg', ['svg']);
   // gulp.watch('source/assets/images/*', ['images']);
-  gulp.watch(config.styles.srcDirectory + '**/*.scss', ['styles']);
+  gulp.watch(config.styles.srcDirectory + '**/*.scss', ['styles', 'lint:styles']);
 });

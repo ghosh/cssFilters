@@ -23,9 +23,9 @@
   }
 
   &__heading {
-    position: relative;
     margin-bottom: 20px;
     margin-top: 50px;
+    position: relative;
 
     &:first-child {
       margin-top: 0;
@@ -33,12 +33,12 @@
   }
 
   &__clear {
-    font-size: 13px;
-    right: 0;
     color: c('base', 'link-color');
     cursor: pointer;
-    top: 0;
+    font-size: 13px;
     position: absolute;
+    right: 0;
+    top: 0;
   }
 
   &__label,

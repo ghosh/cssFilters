@@ -840,19 +840,19 @@ span {
     cursor: default; }
 
 .tabs__heading {
-  position: relative;
   margin-bottom: 20px;
-  margin-top: 50px; }
+  margin-top: 50px;
+  position: relative; }
   .tabs__heading:first-child {
     margin-top: 0; }
 
 .tabs__clear {
-  font-size: 13px;
-  right: 0;
   color: #15b0ed;
   cursor: pointer;
-  top: 0;
-  position: absolute; }
+  font-size: 13px;
+  position: absolute;
+  right: 0;
+  top: 0; }
 
 .tabs__label, .tabs__subheader {
   color: #5e6873;
