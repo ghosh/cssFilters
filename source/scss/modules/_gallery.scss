@@ -11,12 +11,22 @@
   }
 
   &__trigger {
-    @include centerer(true, false);
-    bottom: 10px;
+
     color: c('base', 'link-color');
     cursor: pointer;
+    float: right;
     font-size: 13px;
-    position: absolute;
+
+    i {
+      font-size: 120%;
+      margin-top: -4px;
+      position: absolute;
+      transform: rotate(90deg);
+    }
+
+    span {
+      padding-left: 27px;
+    }
   }
 
   &__items {

@@ -66,3 +66,19 @@ pre {
     text-align: center;
   }
 }
+
+
+.credits {
+  @include centerer(true, false);
+  bottom: 10px;
+  position: absolute;
+
+  &__cite {
+    font-size: 12px;
+
+    span,
+    a {
+      color: c('base', 'cite-color');
+    }
+  }
+}

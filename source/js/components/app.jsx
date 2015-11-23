@@ -257,6 +257,12 @@ var App = React.createClass({
     return (
       <section className="wrap" key={this.state.timestamp}>
       <div className="wrap-minor">
+      <Gallery
+      image={this.state.image}
+      preset={this.state.preset}
+      gallery={this.state.gallery}
+      updatePreset={this.updatePreset}
+      />
       <Main
       image={this.state.image}
       overlay={this.state.overlay}
@@ -264,12 +270,6 @@ var App = React.createClass({
       gallery={this.state.gallery}
       toggleGallery={this.toggleGallery}
       updateMainImage={this.updateMainImage}
-      />
-      <Gallery
-      image={this.state.image}
-      preset={this.state.preset}
-      gallery={this.state.gallery}
-      updatePreset={this.updatePreset}
       />
       </div>
       <Sidebar

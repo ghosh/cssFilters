@@ -27,11 +27,8 @@ body {
 }
 
 .main {
-  // align-items: center;
   background: c('base', 'main-bg');
-  // display: flex;
   flex-grow: 1;
-  // justify-content: center;
   overflow: hidden;
   padding: 20px;
   position: relative;
