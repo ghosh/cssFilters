@@ -1,24 +1,18 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-var cssnano = require('cssnano');
-var browserify = require('gulp-browserify');
-var uglify = require('gulp-uglify');
-var imagemin = require('gulp-imagemin');
-var concat = require('gulp-concat');
-var plumber = require('gulp-plumber');
-var sourcemaps = require('gulp-sourcemaps');
-var notify = require('gulp-notify');
-var gutil = require('gulp-util');
-var rename = require('gulp-rename');
-var gulpif = require('gulp-if');
-var open = require('gulp-open');
-var connect = require('gulp-connect');
-var watch = require('gulp-watch');
-var scsslint = require('gulp-scss-lint');
-var eslint = require('gulp-eslint');
-var argv = require('yargs').argv;
+var gulp        = require('gulp'),
+    sass        = require('gulp-sass'),
+    postcss = require('gulp-postcss'),
+    autoprefixer = require('autoprefixer'),
+    willChange = require('postcss-will-change'),
+    vmin = require('postcss-vmin'),
+    mqpacker = require('css-mqpacker'),
+    cssnano = require('cssnano'),
+    rename      = require('gulp-rename'),
+    plumber     = require('gulp-plumber'),
+    notify      = require('gulp-notify'),
+    browserSync = require('browser-sync'),
+    gulpif = require('gulp-if'),
+    argv        = require('yargs').argv,
+    reload      = browserSync.reload;
 
 
 
@@ -53,142 +47,38 @@ var config = {
 };
 
 
-// ----------------------------------------------------------------------------
-// Styles - Sass compilation and minification
-// ----------------------------------------------------------------------------
-gulp.task('styles', function(){
+gulp.task('styles', function() {
   var processors = [
-    autoprefixer({browsers: ['last 2 versions']}),
-    cssnano
+    willChange(),
+    vmin(),
+    mqpacker(),
+    autoprefixer({ browsers: ['last 2 versions'] })
   ];
   gulp.src(config.styles.srcDirectory + config.styles.srcFile)
-    .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
-    .pipe(sourcemaps.init())
+    .pipe(plumber({
+      errorHandler: notify.onError({ title: 'Error: Styles Task', message: '<%= error.message %>' })
+    }))
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss(processors))
-    .pipe(sourcemaps.write())
+    .pipe(gulpif(argv.build, postcss([cssnano()])))
     .pipe(rename(config.styles.distFile))
     .pipe(gulp.dest(config.styles.distDirectory))
-    .pipe(connect.reload());
-  gutil.log(gutil.colors.grey('---------------------------------------'));
-  gutil.log(gutil.colors.yellow('Reactor:'), gutil.colors.green('✓ Style compilation completed'));
-  gutil.log(gutil.colors.grey('---------------------------------------'));
+    .pipe(reload({ stream:true }));
 });
 
 
-// ----------------------------------------------------------------------------
-// Scripts - Module loading via browserify and minification
-// ----------------------------------------------------------------------------
-gulp.task('scripts', function() {
-  gulp.src(config.scripts.srcDirectory + config.scripts.srcFile)
-    .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
-    .pipe(browserify({ transform: 'reactify', debug: true }))
-    .pipe(concat(config.scripts.distFile))
-    // .pipe(uglify())
-    .pipe(gulp.dest(config.scripts.distDirectory))
-    .pipe(connect.reload());
-  gutil.log(gutil.colors.grey('---------------------------------------'));
-  gutil.log(gutil.colors.yellow('Reactor:'), gutil.colors.green('✓ Script compilation completed'));
-  gutil.log(gutil.colors.grey('---------------------------------------'));
-});
+gulp.task('compile', ['styles'])
 
-
-// ----------------------------------------------------------------------------
-// Images - Optimizes jpg, png, gif, svg
-// ----------------------------------------------------------------------------
-gulp.task('images', function() {
-  return gulp.src('source/images/**/*')
-    .pipe(imagemin({
-        interlaced: true
-    }))
-    .pipe(gulp.dest('build/images'))
-    .pipe(connect.reload());
-});
-
-
-// ----------------------------------------------------------------------------
-// Markup - Copies the only html file from source to build folder
-// ----------------------------------------------------------------------------
-gulp.task('copy', function(){
-  gulp.src('source/**/*.html')
-    .pipe(gulp.dest('build/'))
-    .pipe(connect.reload());
-});
-
-
-// ----------------------------------------------------------------------------
-// JS Lint - Enforcing coding practices
-// ----------------------------------------------------------------------------
-gulp.task('jslint', function () {
-  gulp.src(['source/js/**/*.*', 'gulpfile.js'])
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
-    .pipe(connect.reload());
-  gutil.log(gutil.colors.grey('---------------------------------------'));
-  gutil.log(gutil.colors.yellow('Reactor:'), gutil.colors.green('✓ JS lint complete'));
-  gutil.log(gutil.colors.grey('---------------------------------------'));
-});
-
-
-// ----------------------------------------------------------------------------
-// SCSS Lint - Enforcing coding practices
-// ----------------------------------------------------------------------------
-gulp.task('scsslint', function () {
-  gulp.src('source/scss/**/*.scss')
-    .pipe(scsslint({'config': '.sass-lint.yml'}));
-  gutil.log(gutil.colors.grey('---------------------------------------'));
-  gutil.log(gutil.colors.yellow('Reactor:'), gutil.colors.green('✓ SCSS lint complete'));
-  gutil.log(gutil.colors.grey('---------------------------------------'));
-});
-
-
-// ----------------------------------------------------------------------------
-// Server - Start a server for development
-// ----------------------------------------------------------------------------
-gulp.task('server', function() {
-  connect.server({
-    root: 'build',
-    port: 9000,
-    livereload: true
+gulp.task('go', ['compile'],function() {
+  browserSync({
+    server: {
+      baseDir: 'build'
+    },
+    open: argv.open == 1 ? true : false
   });
+
+  // gulp.watch('source/**/*.hbs', ['hbs']);
+  // gulp.watch('source/assets/svg/**/*.svg', ['svg']);
+  // gulp.watch('source/assets/images/*', ['images']);
+  gulp.watch(config.styles.srcDirectory + '**/*.scss', ['styles']);
 });
-
-
-// ----------------------------------------------------------------------------
-// Open - Open the site in the browser [--open]
-// ----------------------------------------------------------------------------
-gulp.task('open', function(){
-  var options = {
-    uri: 'http://localhost:9000',
-    app: 'Google Chrome'
-  };
-  gulp.src('')
-  .pipe(gulpif(argv.open, open(options)));
-});
-
-
-// ----------------------------------------------------------------------------
-// Watch - Watches files for changes and triggers tasks
-// ----------------------------------------------------------------------------
-gulp.task('watch', function() {
-  gulp.watch(config.styles.srcDirectory + '**/*.*', ['styles']);
-  gulp.watch([config.scripts.srcDirectory + '**/*.*', 'gulpfile.js'], ['scripts']);
-  gulp.watch(config.markup.srcDirectory+'**/*.html', ['copy']);
-  gulp.watch('source/images/**.*', ['images']);
-  gutil.log(gutil.colors.grey('---------------------------------------'));
-  gutil.log(gutil.colors.yellow('Reactor:'), gutil.colors.green('Watching for changes'));
-  gutil.log(gutil.colors.grey('---------------------------------------'));
-});
-
-
-// ----------------------------------------------------------------------------
-// Internal Tasks
-// ----------------------------------------------------------------------------
-gulp.task('lint', ['scsslint', 'jslint']);
-
-
-// ----------------------------------------------------------------------------
-// Main Gulp Task - `gulp go` accepts a `--open` flag to open in browser
-// ----------------------------------------------------------------------------
-gulp.task('go', ['server', 'watch', 'open']);
