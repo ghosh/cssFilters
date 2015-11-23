@@ -8,8 +8,8 @@ var Share = require('./share');
 var config = {
   'twitter': true,
   'facebook': true,
-  'gplus': true,
-  'sharecount': true
+  'gplus': false,
+  'sharecount': false
 };
 
 Share.boot(config);
