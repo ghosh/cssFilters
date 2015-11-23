@@ -191,4 +191,4 @@ gulp.task('lint', ['scsslint', 'jslint']);
 // ----------------------------------------------------------------------------
 // Main Gulp Task - `gulp go` accepts a `--open` flag to open in browser
 // ----------------------------------------------------------------------------
-gulp.task('go', ['lint', 'server', 'watch', 'open']);
+gulp.task('go', ['server', 'watch', 'open']);
