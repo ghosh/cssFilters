@@ -182,8 +182,9 @@ gulp.task('go', ['compile', 'lint'],function() {
 });
 
 gulp.task('deploy', function () {
-  return gulp.src('./build/**/*')
-    .pipe(deploy(ghPages({
-      'remoteUrl' : 'git@github.com:Ghosh/cssFilters.git'
-    })))
+  return gulp
+    .src('./build/**/*')
+    .pipe(deploy({
+        'remoteUrl' : 'git@github.com:Ghosh/cssFilters.git'
+    }));
 });
