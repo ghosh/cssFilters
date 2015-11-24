@@ -145,6 +145,13 @@ gulp.task('copy:fonts', function () {
     .pipe(reload({ stream: true }));
 });
 
+gulp.task('copy:cname', function () {
+  return gulp
+    .src('./source/CNAME')
+    .pipe(gulp.dest('./build/'))
+    .pipe(reload({ stream: true }));
+});
+
 
 gulp.task('images', function() {
   gulp.src('source/images/*')
@@ -157,7 +164,7 @@ gulp.task('images', function() {
 });
 
 
-gulp.task('copy', ['copy:index', 'copy:fonts'])
+gulp.task('copy', ['copy:index', 'copy:fonts', 'copy:cname'])
 gulp.task('lint', ['lint:styles', 'lint:scripts'])
 gulp.task('compile', ['copy', 'styles', 'libs', 'scripts', 'images'])
 
