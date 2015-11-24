@@ -1,29 +1,29 @@
-var gulp        = require('gulp'),
-    sass        = require('gulp-sass'),
-    postcss = require('gulp-postcss'),
-    autoprefixer = require('autoprefixer'),
-    willChange = require('postcss-will-change'),
-    vmin = require('postcss-vmin'),
-    mqpacker = require('css-mqpacker'),
-    cssnano = require('cssnano'),
-    rename      = require('gulp-rename'),
-    plumber     = require('gulp-plumber'),
-    notify      = require('gulp-notify'),
-    browserSync = require('browser-sync'),
-    gulpif = require('gulp-if'),
-    scsslint = require('gulp-scss-lint'),
+var gulp            = require('gulp'),
+    sass            = require('gulp-sass'),
+    postcss         = require('gulp-postcss'),
+    autoprefixer    = require('autoprefixer'),
+    willChange      = require('postcss-will-change'),
+    vmin            = require('postcss-vmin'),
+    mqpacker        = require('css-mqpacker'),
+    cssnano         = require('cssnano'),
+    rename          = require('gulp-rename'),
+    plumber         = require('gulp-plumber'),
+    notify          = require('gulp-notify'),
+    browserSync     = require('browser-sync'),
+    gulpif          = require('gulp-if'),
+    scsslint        = require('gulp-scss-lint'),
     scssLintStylish = require('gulp-scss-lint-stylish'),
-    cache = require('gulp-cached'),
-
-    browserify = require('browserify'),
-    source = require('vinyl-source-stream'),
-    buffer = require('vinyl-buffer'),
-    uglify = require('gulp-uglify'),
-    sourcemaps = require('gulp-sourcemaps'),
-    reactify = require('reactify'),
-
-    argv        = require('yargs').argv,
-    reload      = browserSync.reload;
+    cache           = require('gulp-cached'),
+    browserify      = require('browserify'),
+    source          = require('vinyl-source-stream'),
+    buffer          = require('vinyl-buffer'),
+    uglify          = require('gulp-uglify'),
+    sourcemaps      = require('gulp-sourcemaps'),
+    reactify        = require('reactify'),
+    imagemin        = require('gulp-imagemin');
+    pngquant        = require('imagemin-pngquant');
+    argv            = require('yargs').argv,
+    reload          = browserSync.reload;
 
 
 
@@ -108,7 +108,7 @@ gulp.task('scripts', function () {
     .pipe(sourcemaps.write(config.scripts.distDirectory))
     .pipe(rename(config.scripts.distFile))
     .pipe(gulp.dest(config.scripts.distDirectory))
-    .pipe(reload({ stream:true }));
+    .pipe(reload({ stream: true }));
 });
 
 
@@ -125,12 +125,24 @@ gulp.task('lint:styles', function() {
 gulp.task('copy', function () {
   return gulp
     .src('./source/index.html')
-    .pipe(gulp.dest('./build/'));
-})
+    .pipe(gulp.dest('./build/'))
+    .pipe(reload({ stream: true }));
+});
+
+
+gulp.task('images', function() {
+  gulp.src('source/images/*')
+  .pipe(imagemin({
+      progressive: true,
+      interlaced: true
+  }))
+  .pipe(gulp.dest('build/images'))
+  .pipe(reload({ stream: true }));
+});
 
 
 gulp.task('lint', ['lint:styles'])
-gulp.task('compile', ['copy', 'styles', 'libs', 'scripts'])
+gulp.task('compile', ['copy', 'styles', 'libs', 'scripts', 'images'])
 
 gulp.task('go', ['compile', 'lint'],function() {
   browserSync({
@@ -141,7 +153,8 @@ gulp.task('go', ['compile', 'lint'],function() {
   });
 
 
-  // gulp.watch('source/assets/images/*', ['images']);
+  gulp.watch('source/index.html', ['copy']);
+  gulp.watch('source/images/**/*', ['images']);
   gulp.watch(config.scripts.srcDirectory + '**/*', ['scripts']);
   gulp.watch(config.styles.srcDirectory + '**/*.scss', ['styles', 'lint:styles']);
 });
