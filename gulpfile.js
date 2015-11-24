@@ -23,6 +23,7 @@ var gulp            = require('gulp'),
     reactify        = require('reactify'),
     imagemin        = require('gulp-imagemin'),
     pngquant        = require('imagemin-pngquant'),
+    deploy          = require('gulp-gh-pages'),
     argv            = require('yargs').argv,
     reload          = browserSync.reload;
 
@@ -178,4 +179,9 @@ gulp.task('go', ['compile', 'lint'],function() {
   gulp.watch('source/images/**/*', ['images']);
   gulp.watch(config.scripts.srcDirectory + '**/*', ['scripts', 'lint:scripts']);
   gulp.watch(config.styles.srcDirectory + '**/*.scss', ['styles', 'lint:styles']);
+});
+
+gulp.task('deploy', function () {
+  return gulp.src('./build/**/*')
+    .pipe(deploy())
 });
