@@ -83,9 +83,10 @@ gulp.task('libs', function () {
     .require('react')
     .require('react-dom')
     .bundle()
-    .on('error', notify.onError({ message: 'Error: <%= error.message %>'}))
     .pipe(source('libs.js'))
+    .pipe(buffer())
     .pipe(gulpif(argv.build, uglify()))
+    .on('error', notify.onError({ message: 'Error: <%= error.message %>'}))
     .pipe(gulp.dest('./build/scripts'));
 });
 
