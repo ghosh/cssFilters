@@ -131,10 +131,17 @@ gulp.task('lint:scripts', function() {
 });
 
 
-gulp.task('copy', function () {
+gulp.task('copy:index', function () {
   return gulp
     .src('./source/index.html')
     .pipe(gulp.dest('./build/'))
+    .pipe(reload({ stream: true }));
+});
+
+gulp.task('copy:fonts', function () {
+  return gulp
+    .src('./source/fonts/**/*')
+    .pipe(gulp.dest('./build/fonts/'))
     .pipe(reload({ stream: true }));
 });
 
@@ -150,6 +157,7 @@ gulp.task('images', function() {
 });
 
 
+gulp.task('copy', ['copy:index', 'copy:fonts'])
 gulp.task('lint', ['lint:styles', 'lint:scripts'])
 gulp.task('compile', ['copy', 'styles', 'libs', 'scripts', 'images'])
 

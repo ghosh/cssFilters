@@ -2,12 +2,15 @@
 // $pesticide-debug-depth: true;
 
 @import 'config/color';
+@import 'config/font-face';
 
 @import '../../bower_components/sanitize-css/dist/sanitize';
 @import '../../bower_components/stylekit/stylekit';
 
-@import 'base/layout';
-@import 'base/typography';
+@import 'core/layout';
+@import 'core/typography';
+@import 'core/icons';
+
 @import 'modules/header';
 @import 'modules/slider';
 @import 'modules/range';

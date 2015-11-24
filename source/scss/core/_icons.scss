@@ -1,0 +1,62 @@
+// scss-lint:disable ImportantRule
+@charset 'UTF-8';
+
+[data-icon]:before {
+  @include font-smoothing();
+  content: attr(data-icon);
+  font-family: 'cssfiltericons' !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  font-weight: normal !important;
+  line-height: 1;
+  speak: none;
+  text-transform: none !important;
+}
+
+[class^='icon-']:before,
+[class*=' icon-']:before {
+  @include font-smoothing();
+  font-family: 'cssfiltericons' !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  font-weight: normal !important;
+  line-height: 1;
+  speak: none;
+  text-transform: none !important;
+}
+
+.icon-image:before {
+  content: 'a';
+}
+
+.icon-upload:before {
+  content: 'b';
+}
+
+.icon-close:before {
+  content: 'd';
+}
+
+.icon-github:before {
+  content: 'e';
+}
+
+.icon-twitter:before {
+  content: 'f';
+}
+
+.icon-facebook:before {
+  content: 'g';
+}
+
+.icon-settings:before {
+  content: 'i';
+}
+
+.icon-logo:before {
+  content: 'h';
+}
+
+.icon-cssfilter:before {
+  content: 'c';
+}
