@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactModal = require('react-modal');
-var $ = require('../vendor/jquery');
+var $ = require('jquery');
 
 var UnsplashModal = React.createClass({
 

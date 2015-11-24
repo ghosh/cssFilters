@@ -1,4 +1,4 @@
-var $ = require('./vendor/jquery');
+var $ = require('jquery');
 
 var Track = ( function( window, undefined ) {
 
