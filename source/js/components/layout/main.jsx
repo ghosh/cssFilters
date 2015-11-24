@@ -24,7 +24,7 @@ var Main = React.createClass({
         <Photo overlay={this.props.overlay} filter={this.props.filter} image={this.props.image}/>
 
         <div className="credits">
-          <p className="credits__cite">Built by <a href="#">@_ighosh</a>. Presets by <a href="#">@una</a></p>
+          <p className="credits__cite">Built by <a href="https://twitter.com/_ighosh" target="_blank">@_ighosh</a>. Presets from <a href="http://una.im/CSSgram/" target="_blank">cssgram</a> by <a href="https://twitter.com/una" target="_blank">@una</a></p>
         </div>
       </main>
     )

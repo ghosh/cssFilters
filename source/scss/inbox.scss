@@ -79,9 +79,12 @@ pre {
   &__cite {
     font-size: 12px;
 
-    span,
-    a {
+    span {
       color: c('base', 'cite-color');
+    }
+
+    a {
+      color: darken(c('base', 'link-color'), 10%);
     }
   }
 }
