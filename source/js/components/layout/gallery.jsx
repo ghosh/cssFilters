@@ -1,4 +1,4 @@
-var React = require('React');
+var React = require('react');
 var FilterFactory = require('../../factory');
 var presets = require('../../presets');
 var classNames = require('classnames');

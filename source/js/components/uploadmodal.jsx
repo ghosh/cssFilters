@@ -1,4 +1,4 @@
-var React = require('React');
+var React = require('react');
 var ReactModal = require('react-modal');
 var Dropzone = require('react-dropzone');
 

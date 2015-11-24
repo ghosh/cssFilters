@@ -78,14 +78,25 @@ gulp.task('styles', function() {
 });
 
 
+gulp.task('libs', function () {
+  return browserify()
+    .require('react')
+    .require('react-dom')
+    .bundle()
+    .on('error', notify.onError({ message: 'Error: <%= error.message %>'}))
+    .pipe(source('libs.js'))
+    .pipe(gulp.dest('./build/scripts'));
+});
+
+
 gulp.task('scripts', function () {
   var b = browserify({
     entries: './source/js/inbox.js',
     debug: true,
     transform: [reactify]
   });
-  // b.external('react')
-  // b.external('react-dom')
+  b.external('react')
+  b.external('react-dom')
 
   return b.bundle()
     .pipe(source('bundle.js'))
@@ -112,7 +123,7 @@ gulp.task('lint:styles', function() {
 
 
 gulp.task('lint', ['lint:styles'])
-gulp.task('compile', ['styles', 'scripts'])
+gulp.task('compile', ['styles', 'libs', 'scripts'])
 
 gulp.task('go', ['compile', 'lint'],function() {
   browserSync({

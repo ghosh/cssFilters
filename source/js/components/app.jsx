@@ -1,4 +1,4 @@
-var React = require('React');
+var React = require('react');
 var Update = require('react-addons-update');
 var Sidebar = require('./layout/sidebar.jsx');
 var Main = require('./layout/main.jsx');

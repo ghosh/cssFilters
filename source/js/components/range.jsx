@@ -1,4 +1,4 @@
-var React = require('React');
+var React = require('react');
 
 var RangleSlider = React.createClass({
     render: function() {

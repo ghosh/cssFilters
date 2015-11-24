@@ -1,4 +1,4 @@
-var React = require('React');
+var React = require('react');
 var Color = require('./Color.jsx');
 var OverlayType = require('./overlaytype.jsx');
 var GradientDirections = require('./gradientdirection.jsx');

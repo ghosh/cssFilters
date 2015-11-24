@@ -1,4 +1,4 @@
-var React = require('React');
+var React = require('react');
 var RangeSlider = require('../range.jsx');
 var CodeBlock = require('../codeblock.jsx');
 var BlendModes = require('../blendmode.jsx');

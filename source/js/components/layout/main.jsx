@@ -1,4 +1,4 @@
-var React = require('React');
+var React = require('react');
 var Photo = require('../photo.jsx');
 var UnsplashModal = require('../unsplashmodal.jsx');
 var UploadModal = require('../uploadmodal.jsx');

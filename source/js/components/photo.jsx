@@ -1,4 +1,4 @@
-var React = require('React');
+var React = require('react');
 var FilterFactory = require('../factory');
 var ImageLoader = require('react-imageloader');
 
