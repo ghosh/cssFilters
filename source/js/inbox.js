@@ -4,15 +4,12 @@ var App = require('./components/app.jsx');
 var Share = require('./share');
 
 
-
-var config = {
+Share.boot({
   'twitter': true,
   'facebook': true,
   'gplus': false,
   'sharecount': false
-};
-
-Share.boot(config);
+});
 
 
 /**
@@ -22,3 +19,9 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
+
+
+console.log('=====================================================================');
+console.log('cssfilters.co - Custom and Instagram like photo filters for CSS');
+console.log('=====================================================================');
+console.log('A little project by www.twitter.com/_ighosh');

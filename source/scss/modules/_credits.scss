@@ -1,0 +1,17 @@
+.credits {
+  @include centerer(true, false);
+  bottom: 10px;
+  position: absolute;
+
+  &__cite {
+    font-size: 12px;
+
+    span {
+      color: c('base', 'cite-color');
+    }
+
+    a {
+      color: darken(c('base', 'link-color'), 10%);
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.dropzone {
+  border: dashed 3px c('base', 'header-bg-start');
+  height: 100%;
+  position: relative;
+  width: 100%;
+
+  &__byline {
+    @include centerer();
+    color: c('base', 'slider-label-color');
+    font-size: 13px;
+    text-align: center;
+  }
+}

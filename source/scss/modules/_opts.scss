@@ -1,0 +1,17 @@
+.opts {
+  @include clearfix();
+  margin-bottom: 20px;
+  margin-top: 10px;
+
+  label {
+    color: c('base', 'slider-label-color');
+    float: left;
+    font-size: 12px;
+    margin-top: 9px;
+  }
+
+  .dropdown {
+    float: right;
+  }
+
+}
