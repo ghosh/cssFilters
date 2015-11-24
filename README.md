@@ -8,7 +8,7 @@ This is the repo for [cssfilters.co](http://www.cssFilters.co) - A visual tool t
 
 * [Una Kravets](https://twitter.com/Una) - For the fantastic [cssgram](https://github.com/una/CSSgram) project
 * [Unsplash](https://unsplash.com/) - For collecting and providing the awesome demo images
-* [React](https://facebook.github.io/react/) - For being the best js framework ever
+* [React](https://facebook.github.io/react/) - For being the most awesome js framework ever
 
 ### Improvements and Bugs
 

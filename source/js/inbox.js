@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var App = require('./components/app.jsx');
 var Share = require('./share');
+var Tracker = require('./track');
 
 
 Share.boot({
@@ -11,6 +12,7 @@ Share.boot({
   'sharecount': false
 });
 
+Tracker.track();
 
 /**
  * Kickoff the app
