@@ -85,6 +85,7 @@ gulp.task('libs', function () {
     .bundle()
     .on('error', notify.onError({ message: 'Error: <%= error.message %>'}))
     .pipe(source('libs.js'))
+    .pipe(gulpif(argv.build, uglify()))
     .pipe(gulp.dest('./build/scripts'));
 });
 
@@ -104,7 +105,6 @@ gulp.task('scripts', function () {
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(gulpif(argv.build, uglify()))
     .on('error', notify.onError({ message: 'Error: <%= error.message %>'}))
-        // .on('error', gutil.log)
     .pipe(sourcemaps.write(config.scripts.distDirectory))
     .pipe(rename(config.scripts.distFile))
     .pipe(gulp.dest(config.scripts.distDirectory))
@@ -122,8 +122,15 @@ gulp.task('lint:styles', function() {
 });
 
 
+gulp.task('copy', function () {
+  return gulp
+    .src('./source/index.html')
+    .pipe(gulp.dest('./build/'));
+})
+
+
 gulp.task('lint', ['lint:styles'])
-gulp.task('compile', ['styles', 'libs', 'scripts'])
+gulp.task('compile', ['copy', 'styles', 'libs', 'scripts'])
 
 gulp.task('go', ['compile', 'lint'],function() {
   browserSync({
@@ -133,8 +140,7 @@ gulp.task('go', ['compile', 'lint'],function() {
     open: argv.open == 1 ? true : false
   });
 
-  // gulp.watch('source/**/*.hbs', ['hbs']);
-  // gulp.watch('source/assets/svg/**/*.svg', ['svg']);
+
   // gulp.watch('source/assets/images/*', ['images']);
   gulp.watch(config.scripts.srcDirectory + '**/*', ['scripts']);
   gulp.watch(config.styles.srcDirectory + '**/*.scss', ['styles', 'lint:styles']);
