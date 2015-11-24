@@ -155,10 +155,11 @@ gulp.task('copy:cname', function () {
 
 
 gulp.task('images', function() {
-  gulp.src('source/images/*')
+  gulp.src('source/images/**/*')
   .pipe(imagemin({
       progressive: true,
-      interlaced: true
+      interlaced: true,
+      use: [pngquant()]
   }))
   .pipe(gulp.dest('build/images'))
   .pipe(reload({ stream: true }));
