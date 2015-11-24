@@ -12,6 +12,7 @@ var gulp            = require('gulp'),
     browserSync     = require('browser-sync'),
     gulpif          = require('gulp-if'),
     scsslint        = require('gulp-scss-lint'),
+    eslint          = require('gulp-eslint'),
     scssLintStylish = require('gulp-scss-lint-stylish'),
     cache           = require('gulp-cached'),
     browserify      = require('browserify'),
@@ -20,8 +21,8 @@ var gulp            = require('gulp'),
     uglify          = require('gulp-uglify'),
     sourcemaps      = require('gulp-sourcemaps'),
     reactify        = require('reactify'),
-    imagemin        = require('gulp-imagemin');
-    pngquant        = require('imagemin-pngquant');
+    imagemin        = require('gulp-imagemin'),
+    pngquant        = require('imagemin-pngquant'),
     argv            = require('yargs').argv,
     reload          = browserSync.reload;
 
@@ -122,6 +123,13 @@ gulp.task('lint:styles', function() {
     }));
 });
 
+gulp.task('lint:scripts', function() {
+	return gulp.src('source/js/**/*')
+		.pipe(eslint('.eslintrc'))
+    .on('error', notify.onError({ message: 'Error: <%= error.message %>'}))
+		.pipe(eslint.format());
+});
+
 
 gulp.task('copy', function () {
   return gulp
@@ -142,20 +150,17 @@ gulp.task('images', function() {
 });
 
 
-gulp.task('lint', ['lint:styles'])
+gulp.task('lint', ['lint:styles', 'lint:scripts'])
 gulp.task('compile', ['copy', 'styles', 'libs', 'scripts', 'images'])
 
 gulp.task('go', ['compile', 'lint'],function() {
   browserSync({
-    server: {
-      baseDir: 'build'
-    },
+    server: {baseDir: 'build' },
     open: argv.open == 1 ? true : false
   });
 
-
   gulp.watch('source/index.html', ['copy']);
   gulp.watch('source/images/**/*', ['images']);
-  gulp.watch(config.scripts.srcDirectory + '**/*', ['scripts']);
+  gulp.watch(config.scripts.srcDirectory + '**/*', ['scripts', 'lint:scripts']);
   gulp.watch(config.styles.srcDirectory + '**/*.scss', ['styles', 'lint:styles']);
 });
