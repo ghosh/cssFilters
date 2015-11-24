@@ -164,7 +164,7 @@ gulp.task('images', function() {
 });
 
 
-gulp.task('copy', ['copy:index', 'copy:fonts', 'copy:cname'])
+gulp.task('copy', ['copy:index', 'copy:fonts'])
 gulp.task('lint', ['lint:styles', 'lint:scripts'])
 gulp.task('compile', ['copy', 'styles', 'libs', 'scripts', 'images'])
 
