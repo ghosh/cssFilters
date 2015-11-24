@@ -1,6 +1,5 @@
 var $ = require('./vendor/jquery');
 
-
 var Track = ( function( window, undefined ) {
 
   var $twitter = $('#share-twitter');

@@ -1,6 +1,5 @@
 var $ = require('./vendor/jquery');
 
-
 var Share = ( function( window, undefined ) {
 
   var config = {

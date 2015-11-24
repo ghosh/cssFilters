@@ -1,5 +1,7 @@
 var React = require('react');
 
+// TODO: Refactor codeblock.jsx. There has to be a better way. This is insane.
+// TODO: [Priority] Refactor codeblock.jsx. Show nothing in empty state
 var CodeBlock = React.createClass({
 
   render: function() {

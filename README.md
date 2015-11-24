@@ -22,6 +22,7 @@ There is only one gulp task which you would need - `gulp go`. This handles all t
 * `--open` - Opens the project in your default browser after compilation
 * `--build` - Minifies and optimizes the stylesheets and scripts
 
+These flags can be passed together also. For example:- `gulp go --build --open`. This will open the browser and run the watch task in production mode.
 -
 
 A little project by [@_ighosh](http://twitter.com/_ighosh).
