@@ -125,6 +125,6 @@ gulp.task('go', ['compile', 'lint'],function() {
   // gulp.watch('source/**/*.hbs', ['hbs']);
   // gulp.watch('source/assets/svg/**/*.svg', ['svg']);
   // gulp.watch('source/assets/images/*', ['images']);
-  gulp.watch(config.scripts.srcDirectory + '*', ['scripts']);
+  gulp.watch(config.scripts.srcDirectory + '**/*', ['scripts']);
   gulp.watch(config.styles.srcDirectory + '**/*.scss', ['styles', 'lint:styles']);
 });
