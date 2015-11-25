@@ -41,7 +41,7 @@ $share-icon-size: 17px;
 
 .share-title {
   @include font-smoothing();
-  font-family: 'Helvetica Neue';
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
   font-size: 12px;
   font-weight: 900;
   padding-right: 10px;

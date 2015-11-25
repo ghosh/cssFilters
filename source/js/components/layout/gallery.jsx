@@ -2,6 +2,7 @@ var React = require('react');
 var $ = require('jquery');
 var nanoScroller = require('nanoScroller');
 var FilterFactory = require('../../factory');
+var dragscroll = require('../../vendor/drag');
 var presets = require('../../presets');
 var classNames = require('classnames');
 
@@ -56,7 +57,7 @@ var Gallery = React.createClass({
 
       return (
         <div className={galleryClass}>
-          <div className="gallery__scroll-cont nano-content">
+          <div className="gallery__scroll-cont nano-content dragscroll">
             <ul className="gallery__items">
               {thumbs}
             </ul>
