@@ -27,6 +27,7 @@ var Sidebar = React.createClass({
 
   componentDidMount: function() {
     $('.nano').nanoScroller();
+    $('.mark-scroll').nanoScroller();
   },
 
   render: function () {
@@ -89,11 +90,15 @@ var Sidebar = React.createClass({
               <div className="tabs__heading">
                   <p className="tabs__subheader">Markup</p>
               </div>
-              <pre><code>
+              <pre className="mark-scroll">
+                <div className="nano-content mark__scroll-cont">
+                <code>
               &lt;figure class="filter"&gt;<br />
               &nbsp;&nbsp;&lt;img src="..."&gt;<br />
               &lt;/figure&gt;
-              </code></pre>
+                </code>
+              </div>
+              </pre>
             </TabPanel>
           </Tabs>
         </div>

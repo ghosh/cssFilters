@@ -1,8 +1,14 @@
 var React = require('react');
+var $ = require('jquery');
+var nanoScroller = require('nanoScroller');
 
 // TODO: Refactor codeblock.jsx. There has to be a better way. This is insane.
 // TODO: [Priority] Refactor codeblock.jsx. Show nothing in empty state
 var CodeBlock = React.createClass({
+
+  componentDidMount: function() {
+    $('.code-scroll').nanoScroller();
+  },
 
   render: function() {
 
@@ -85,8 +91,12 @@ var CodeBlock = React.createClass({
     }
 
     return (
-      <pre className="code__panel"><code dangerouslySetInnerHTML={{__html: output}}>
-      </code></pre>
+      <pre className="code__panel code-scroll">
+        <div className="nano-content code__scroll-cont">
+          <code dangerouslySetInnerHTML={{__html: output}}>
+          </code>
+        </div>
+      </pre>
     );
 
   }

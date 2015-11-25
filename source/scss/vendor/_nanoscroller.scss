@@ -1,11 +1,19 @@
 // scss-lint:disable all
 /** initial setup **/
 
+.mark__scroll-cont,
+.code__scroll-cont {
+  position: initial !important;
+  overflow: scroll !important;
+}
+
 $nanoClass: "nano";
 $paneClass: "nano-pane";
 $sliderClass: "nano-slider";
 $contentClass: "nano-content";
 
+.mark-scroll,
+.code-scroll,
 .modal-scroll,
 .gallery-scroll,
 .#{$nanoClass} {
