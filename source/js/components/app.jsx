@@ -34,7 +34,7 @@ var App = React.createClass({
         unsplashID: 'W_9mOGUwR08'
       },
       gallery: {
-        visible: false
+        visible: true
       },
       filter: {
         contrast: '100',
