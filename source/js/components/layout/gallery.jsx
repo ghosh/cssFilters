@@ -1,9 +1,15 @@
 var React = require('react');
+var $ = require('jquery');
+var nanoScroller = require('nanoScroller');
 var FilterFactory = require('../../factory');
 var presets = require('../../presets');
 var classNames = require('classnames');
 
 var Gallery = React.createClass({
+
+    componentDidMount: function() {
+      $('.gallery-scroll').nanoScroller({ alwaysVisible: true });
+    },
 
     enablePreset: function(name, event) {
       this.props.updatePreset(name);
@@ -13,6 +19,7 @@ var Gallery = React.createClass({
 
       var galleryClass = classNames({
         'gallery': true,
+        'gallery-scroll': true,
         'is-active': this.props.gallery.visible
       });
 
@@ -49,9 +56,11 @@ var Gallery = React.createClass({
 
       return (
         <div className={galleryClass}>
-          <ul className="gallery__items">
-            {thumbs}
-          </ul>
+          <div className="gallery__scroll-cont nano-content">
+            <ul className="gallery__items">
+              {thumbs}
+            </ul>
+          </div>
         </div>
       );
     }

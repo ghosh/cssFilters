@@ -26,8 +26,6 @@ var Sidebar = React.createClass({
   },
 
   componentDidMount: function() {
-    // console.log('Hello');
-    // console.log($('.nano'));
     $('.nano').nanoScroller();
   },
 
