@@ -82,6 +82,8 @@ gulp.task('styles', function() {
 
 gulp.task('libs', function () {
   return browserify()
+    .require('jquery')
+    .require('nanoScroller')
     .require('react')
     .require('react-dom')
     .bundle()
@@ -99,6 +101,8 @@ gulp.task('scripts', function () {
     debug: true,
     transform: [reactify]
   });
+  b.external('jquery')
+  b.external('nanoScroller')
   b.external('react')
   b.external('react-dom')
 

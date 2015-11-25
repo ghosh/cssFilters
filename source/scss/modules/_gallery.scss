@@ -1,4 +1,4 @@
-// scss-lint:disable SelectorFormat
+// scss-lint:disable SelectorFormat ImportantRule
 
 .gallery {
   background-color: c('base', 'tab-bg-color');
@@ -8,6 +8,11 @@
 
   &.is-active {
     flex-basis: 148px;
+  }
+
+  &__scroll-cont {
+    overflow: hidden !important;
+    overflow-x: scroll !important;
   }
 
   &__trigger {

@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactModal = require('react-modal');
-var $ = require('../vendor/jquery');
+var $ = require('jquery');
+var nanoScroller = require('nanoScroller');
 
 var UnsplashModal = React.createClass({
 
@@ -26,6 +27,8 @@ var UnsplashModal = React.createClass({
     .done(function(data) {
         this.setState({images: data });
     }.bind(this));
+
+    $('.modal-scroll').nanoScroller({ alwaysVisible: true });
   },
 
   shouldComponentUpdate: function(nextProps, nextState){
@@ -67,15 +70,17 @@ var UnsplashModal = React.createClass({
       <div>
         <p className="modal__trigger" onClick={this.openModal}><i className="icon-image"/> Select an image from Unsplash</p>
         <ReactModal className="modal" isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} style={modalStyles} >
-          <div className="modal__header">
-            <h4 className="modal__title">
-              Select an image
-            </h4>
-            <a href="#" className="modal__close icon-close" onClick={this.closeModal}></a>
-          </div>
-          <div className="modal__body">
-            {images}
-          </div>
+            <div className="modal__header">
+              <h4 className="modal__title">
+                Select an image
+              </h4>
+              <a href="#" className="modal__close icon-close" onClick={this.closeModal}></a>
+            </div>
+            <div className="modal__body modal-scroll">
+              <div className="nano-content modal__scroll-cont">
+                {images}
+              </div>
+            </div>
         </ReactModal>
       </div>
     );

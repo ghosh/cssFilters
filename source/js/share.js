@@ -1,4 +1,4 @@
-var $ = require('./vendor/jquery');
+var $ = require('jquery');
 
 var Share = ( function( window, undefined ) {
 
