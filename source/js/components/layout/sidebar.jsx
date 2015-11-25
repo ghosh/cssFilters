@@ -1,4 +1,6 @@
 var React = require('react');
+var $ = require('jquery');
+var nanoScroller = require('nanoScroller');
 var RangeSlider = require('../range.jsx');
 var CodeBlock = require('../codeblock.jsx');
 var BlendModes = require('../blendmode.jsx');
@@ -23,10 +25,17 @@ var Sidebar = React.createClass({
     });
   },
 
-    render: function () {
+  componentDidMount: function() {
+    // console.log('Hello');
+    // console.log($('.nano'));
+    $('.nano').nanoScroller();
+  },
 
-      return (
-        <aside className="sidebar">
+  render: function () {
+
+    return (
+      <aside className="sidebar nano">
+        <div className="nano-content">
           <Tabs className="tabs" onSelect={this.handleSelected} selectedIndex={this.state.selectedIndex} >
            <TabList className="tabs__headers">
              <Tab className="tabs__item">
@@ -89,9 +98,10 @@ var Sidebar = React.createClass({
               </code></pre>
             </TabPanel>
           </Tabs>
-        </aside>
-        );
-      }
+        </div>
+      </aside>
+      );
+    }
 });
 
 module.exports = Sidebar;
