@@ -1,4 +1,4 @@
-// scss-lint:disable ImportantRule
+// scss-lint:disable ImportantRule SelectorFormat
 .modal {
   padding: 0 !important;
 
@@ -54,7 +54,10 @@
   &__body {
     @include clearfix();
     height: 450px;
-    overflow-y: scroll;
+  }
+
+  &__scroll-cont {
+    height: 100%;
     padding: 20px;
   }
 
@@ -70,4 +73,9 @@
     height: 90px;
     width: 120px;
   }
+}
+
+
+.ReactModal__Content.ReactModal__Content--after-open.modal {
+  overflow: hidden !important;
 }
