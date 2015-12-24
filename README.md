@@ -1,5 +1,3 @@
-![cssFilters.co](https://raw.github.com/ghosh/cssFilters/master/build/images/cssfilters.jpg)
-
 # cssFilters.co
 
 This is the repo for [cssfilters.co](http://www.cssFilters.co) - A visual tool to create custom and instagram like photo filters in css.
