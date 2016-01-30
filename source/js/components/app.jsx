@@ -132,8 +132,8 @@ var App = React.createClass({
         invert: this.refs.sidebar.refs.invert.refs.range.value,
         hueRotate: this.refs.sidebar.refs.hueRotate.refs.range.value,
         blur: this.refs.sidebar.refs.blur.refs.range.value,
-        opacity: this.refs.sidebar.refs.opacity.refs.range.value,
-        blend: this.refs.sidebar.refs.blend.refs.select.value
+        opacity: this.refs.sidebar.refs.background.refs.opacity.refs.range.value,
+        blend: this.refs.sidebar.refs.background.refs.blend.refs.select.value
       },
       preset: 'custom'
     });

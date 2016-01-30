@@ -4,6 +4,8 @@ var OverlayType = require('./overlaytype.jsx');
 var GradientDirections = require('./gradientdirection.jsx');
 var GradientPositions = require('./gradientposition.jsx');
 var GradientSizes = require('./gradientsize.jsx');
+var RangeSlider = require('./range.jsx');
+var BlendModes = require('./blendmode.jsx');
 
 var Background = React.createClass({
   displayName: 'Background',
@@ -76,6 +78,17 @@ var Background = React.createClass({
         )
       }
   },
+  
+  renderOverlayOptions: function() {
+    if ( this.props.overlay.type == 'solid' || this.props.overlay.type == 'radial' || this.props.overlay.type == 'linear' ) {
+        return (
+          <div>
+            <BlendModes ref="blend" blend={this.props.filter.blend} handeUpdate={this.props.handeUpdate} />
+            <RangeSlider ref="opacity" label="Opacity" value={this.props.filter.opacity} min="0" max="100" unit="%" handeUpdate={this.props.handeUpdate}/>
+          </div>
+        )
+    }
+  },
 
   render: function() {
 
@@ -87,7 +100,8 @@ var Background = React.createClass({
         />
 
         {this.renderColors()}
-
+        
+        {this.renderOverlayOptions()}
       </div>
     );
   }

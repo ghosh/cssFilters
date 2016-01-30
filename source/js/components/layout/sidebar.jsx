@@ -66,6 +66,8 @@ var Sidebar = React.createClass({
 
               <Background
                 ref="background"
+                handeUpdate={this.props.handeUpdate}
+                filter={this.props.filter}
                 overlay={this.props.overlay}
                 updateColor1={this.props.updateColor1}
                 updateColor1Stop={this.props.updateColor1Stop}
@@ -75,8 +77,7 @@ var Sidebar = React.createClass({
                 updateOverlayType={this.props.updateOverlayType}
                 updateGradientPositions={this.props.updateGradientPositions}
               />
-              <BlendModes ref="blend" blend={this.props.filter.blend} handeUpdate={this.props.handeUpdate} />
-              <RangeSlider ref="opacity" label="Opacity" value={this.props.filter.opacity} min="0" max="100" unit="%" handeUpdate={this.props.handeUpdate}/>
+
 
 
             </TabPanel>
