@@ -40,11 +40,12 @@
     justify-content: space-between;
     list-style-type: none;
     margin: 20px;
-    width: 1px;
+    width: 100%;
   }
 
   &__item {
     display: inline-block;
+    margin: 0 5px;
   }
 }
 
@@ -52,8 +53,7 @@
   border: solid 1px c('base', 'border-color');
   border-radius: 2px;
   cursor: pointer;
-  margin: 0 3px;
-  padding: 5px;
+  overflow: hidden;
   padding-bottom: 0;
 
   &.is-active {
@@ -72,5 +72,9 @@
     font-size: 13px;
     line-height: 2;
     text-align: center;
+  }
+
+  &__img {
+    width: 100%;
   }
 }
