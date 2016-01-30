@@ -122,21 +122,29 @@ var App = React.createClass({
   },
 
   handeUpdate: function(event) {
-    this.setState({
+    var newState = Update(this.state, {
       filter: {
-        contrast: this.refs.sidebar.refs.contrast.refs.range.value,
-        saturate: this.refs.sidebar.refs.saturate.refs.range.value,
-        brightness: this.refs.sidebar.refs.brightness.refs.range.value,
-        sepia: this.refs.sidebar.refs.sepia.refs.range.value,
-        grayscale: this.refs.sidebar.refs.grayscale.refs.range.value,
-        invert: this.refs.sidebar.refs.invert.refs.range.value,
-        hueRotate: this.refs.sidebar.refs.hueRotate.refs.range.value,
-        blur: this.refs.sidebar.refs.blur.refs.range.value,
-        opacity: this.refs.sidebar.refs.background.refs.opacity.refs.range.value,
-        blend: this.refs.sidebar.refs.background.refs.blend.refs.select.value
-      },
-      preset: 'custom'
-    });
+        contrast: { $set : this.refs.sidebar.refs.contrast.refs.range.value },
+        saturate: { $set : this.refs.sidebar.refs.saturate.refs.range.value },
+        brightness: { $set : this.refs.sidebar.refs.brightness.refs.range.value },
+        sepia: { $set : this.refs.sidebar.refs.sepia.refs.range.value },
+        grayscale: { $set : this.refs.sidebar.refs.grayscale.refs.range.value },
+        invert: { $set : this.refs.sidebar.refs.invert.refs.range.value },
+        hueRotate: { $set : this.refs.sidebar.refs.hueRotate.refs.range.value },
+        blur: { $set : this.refs.sidebar.refs.blur.refs.range.value }
+      }
+    })
+    this.setState(newState);
+  },
+  
+  updateOverlay: function(event) {
+    var newState = Update(this.state, {
+      filter: {
+        opacity: { $set : this.refs.sidebar.refs.background.refs.opacity.refs.range.value },
+        blend: { $set : this.refs.sidebar.refs.background.refs.blend.refs.select.value }
+      }
+    })
+    this.setState(newState);
   },
 
   updateGradientPositions: function(event) {
@@ -277,6 +285,7 @@ var App = React.createClass({
       overlay={this.state.overlay}
       filter={this.state.filter}
       resetState={this.resetState}
+      updateOverlay={this.updateOverlay}
       updateOverlayColor={this.updateOverlayColor}
       updateColor1={this.updateColor1}
       updateColor1Stop={this.updateColor1Stop}

@@ -83,8 +83,8 @@ var Background = React.createClass({
     if ( this.props.overlay.type == 'solid' || this.props.overlay.type == 'radial' || this.props.overlay.type == 'linear' ) {
         return (
           <div>
-            <BlendModes ref="blend" blend={this.props.filter.blend} handeUpdate={this.props.handeUpdate} />
-            <RangeSlider ref="opacity" label="Opacity" value={this.props.filter.opacity} min="0" max="100" unit="%" handeUpdate={this.props.handeUpdate}/>
+            <BlendModes ref="blend" blend={this.props.filter.blend} handeUpdate={this.props.updateOverlay} />
+            <RangeSlider ref="opacity" label="Opacity" value={this.props.filter.opacity} min="0" max="100" unit="%" handeUpdate={this.props.updateOverlay}/>
           </div>
         )
     }

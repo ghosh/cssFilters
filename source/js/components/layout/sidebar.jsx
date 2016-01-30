@@ -69,6 +69,7 @@ var Sidebar = React.createClass({
                 handeUpdate={this.props.handeUpdate}
                 filter={this.props.filter}
                 overlay={this.props.overlay}
+                updateOverlay={this.props.updateOverlay}
                 updateColor1={this.props.updateColor1}
                 updateColor1Stop={this.props.updateColor1Stop}
                 updateColor2={this.props.updateColor2}
