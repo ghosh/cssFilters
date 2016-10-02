@@ -84,6 +84,6 @@
   box-shadow: none !important;
 }
 
-.react-tabs [role=tab]:focus:after {
+.react-tabs [role=tab]:focus::after {
   background: transparent !important;
 }

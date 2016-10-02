@@ -20,8 +20,8 @@ select {
   width: 200px;
 }
 
-.dropdown:before,
-.dropdown:after {
+.dropdown::before,
+.dropdown::after {
   border: 4px dashed;
   border-color: $arrow-color transparent;
   content: '';
@@ -34,12 +34,12 @@ select {
   z-index: 2;
 }
 
-.dropdown:before {
+.dropdown::before {
   border-bottom-style: solid;
   border-top: 0;
 }
 
-.dropdown:after {
+.dropdown::after {
   border-bottom: 0;
   border-top-style: solid;
   margin-top: 7px;

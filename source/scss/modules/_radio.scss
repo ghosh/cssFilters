@@ -31,7 +31,7 @@ $size: 14px;
       top: 50%;
       width: $size;
 
-      &:after {
+      &::after {
         background: rgba(255, 255, 255, .7);
         border-radius: $size * 2;
         content: '';
@@ -55,7 +55,7 @@ $size: 14px;
     + label {
       color: rgba(255, 255, 255, 1);
 
-      > i:after {
+      > i::after {
         opacity: 1;
       }
     }
@@ -76,7 +76,7 @@ $size: 14px;
   &:checked + label {
     color: c('base', 'tab-label-color-active');
 
-    > i:after {
+    > i::after {
       background: $rad-color;
       border-radius: $size * 5;
       opacity: 1;

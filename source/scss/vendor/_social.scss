@@ -33,7 +33,7 @@ $share-icon-size: 17px;
     font-size: $share-icon-size;
     padding: 0 5px 0 10px;
 
-    &:before {
+    &::before {
       line-height: $share-button-height;
     }
   }
@@ -80,8 +80,8 @@ $share-icon-size: 17px;
     opacity: 1;
   }
 
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     border-bottom: 6px solid transparent;
     border-right: 6px solid;
     border-top: 6px solid transparent;
@@ -94,12 +94,12 @@ $share-icon-size: 17px;
     width: 0;
   }
 
-  &:before {
+  &::before {
     border-right-color: $share-border-color;
     left: -6px;
   }
 
-  &:after {
+  &::after {
     border-right-color: $share-count-bg;
     left: -5px;
   }
@@ -107,7 +107,7 @@ $share-icon-size: 17px;
   a:hover & {
     background-color: darken($share-count-bg, 4%);
 
-    &:after {
+    &::after {
       border-right-color: darken($share-count-bg, 4%);
     }
   }
