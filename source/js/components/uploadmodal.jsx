@@ -65,7 +65,7 @@ var UploadModal = React.createClass({
           <div className="modal__body">
             <div className="nano-content modal__scroll-cont">
             <Dropzone ref="dropzone" className="dropzone" onDrop={this.onDrop} multiple={false}>
-                <p className="dropzone__byline">Try dropping some files here, or click to select files to upload.</p>
+                <p className="dropzone__byline">Drag and drop an image here, or click to select from drive.</p>
             </Dropzone>
           </div>
           </div>

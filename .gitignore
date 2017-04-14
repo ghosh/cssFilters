@@ -2,3 +2,4 @@ node_modules/
 bower_components/
 source/CNAME
 .publish/
+.DS_Store

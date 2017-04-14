@@ -1,7 +1,7 @@
 {
-  "name": "reactor",
+  "name": "cssfilters",
   "version": "0.1.0",
-  "description": "Super charged, opiniated starter kit for react applications",
+  "description": "Custom and Instagram like photo filters for CSS",
   "main": "build/index.html",
   "devDependencies": {
     "autoprefixer": "^6.1.1",
@@ -63,9 +63,9 @@
   "author": "Indrashish Ghosh",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Ghosh/Reaction/issues"
+    "url": "https://github.com/Ghosh/cssFilters/issues"
   },
-  "homepage": "https://github.com/Ghosh/Reaction#readme",
+  "homepage": "https://github.com/Ghosh/cssFilters",
   "dependencies": {
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
