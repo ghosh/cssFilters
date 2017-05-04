@@ -10,8 +10,12 @@
         "quotes": [2, "single", "avoid-escape"]
     },
 
-    "ecmaFeatures": {
-        "jsx": true
+    "parserOptions": {
+      "ecmaVersion": 7,
+      "sourceType": "module",
+      "ecmaFeatures": {
+          "jsx": true,
+      }
     },
 
     "plugins": [
