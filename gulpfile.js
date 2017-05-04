@@ -21,6 +21,8 @@ var gulp            = require('gulp'),
     uglify          = require('gulp-uglify'),
     sourcemaps      = require('gulp-sourcemaps'),
     reactify        = require('reactify'),
+    envify          = require('envify/custom'),
+    collapse        = require('bundle-collapser'),
     imagemin        = require('gulp-imagemin'),
     pngquant        = require('imagemin-pngquant'),
     deploy          = require('gulp-gh-pages'),
@@ -81,12 +83,20 @@ gulp.task('styles', function() {
 
 
 gulp.task('libs', function () {
-  return browserify()
-    .require('jquery')
-    .require('nanoScroller')
-    .require('react')
-    .require('react-dom')
-    .bundle()
+
+  var b = browserify();
+  b.require('jquery')
+  b.require('nanoScroller')
+  b.require('react')
+  b.require('react-dom')
+  b.transform(
+      {global: true},
+      envify({ NODE_ENV: 'production' }),
+      'uglifyify',
+      'collapse'
+  )
+
+  return b.bundle()
     .pipe(source('libs.js'))
     .pipe(buffer())
     .pipe(gulpif(argv.build, uglify()))
