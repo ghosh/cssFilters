@@ -10,9 +10,11 @@
   }
 
   &__logo {
-    color: c('base', 'header-text-color');
+    fill: c('base', 'header-text-color');
     float: left;
+    height: 35px;
     margin-top: 15px;
+    width: 35px;
   }
 
   &__share-btns {
