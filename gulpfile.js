@@ -89,12 +89,12 @@ gulp.task('libs', function () {
   b.require('nanoScroller')
   b.require('react')
   b.require('react-dom')
-  b.transform(
-      {global: true},
-      envify({ NODE_ENV: 'production' }),
-      'uglifyify',
-      'collapse'
-  )
+  // b.transform(
+  //     {global: true},
+  //     envify({ NODE_ENV: 'production' }),
+  //     'uglifyify',
+  //     'collapse'
+  // )
 
   return b.bundle()
     .pipe(source('libs.js'))

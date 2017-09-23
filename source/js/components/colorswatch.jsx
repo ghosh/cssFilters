@@ -1,5 +1,5 @@
 var React = require('react');
-var ColorPicker = require('react-color');
+var { ChromePicker } = require('react-color');
 
 var ColorSwatch = React.createClass({
 
@@ -41,14 +41,13 @@ var ColorSwatch = React.createClass({
           <div className="color__preview" style={swatchColor}></div>
         </div>
         <p className="color__text">{this.props.label}</p>
-        <ColorPicker
+        <ChromePicker
           className="color-picker"
           color={ this.props.overlayColor }
           positionCSS={ popupPosition }
           onChange={ this.props.updateColor }
           onClose={ this.handleClose }
           display={ this.state.displayColorPicker }
-          type="chrome"
         />
       </div>
     );

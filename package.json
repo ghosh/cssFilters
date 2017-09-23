@@ -33,7 +33,7 @@
     "postcss-will-change": "^1.0.0",
     "react": "^0.14.3",
     "react-addons-update": "^0.14.3",
-    "react-color": "^1.2.1",
+    "react-color": "^2.13.8",
     "react-dom": "^0.14.3",
     "react-dropzone": "^3.0.0",
     "react-imageloader": "^2.1.0",
