@@ -35,11 +35,11 @@ var ColorSwatch = React.createClass({
       position: 'absolute'
     }
 
-    const popover = {
+    var popover = {
       position: 'absolute',
       zIndex: '2'
     }
-    const cover = {
+    var cover = {
       position: 'fixed',
       top: '0px',
       right: '0px',

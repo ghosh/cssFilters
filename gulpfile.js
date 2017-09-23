@@ -15,10 +15,13 @@ var gulp            = require('gulp'),
     eslint          = require('gulp-eslint'),
     scssLintStylish = require('gulp-scss-lint-stylish'),
     cache           = require('gulp-cached'),
+    gutil           = require('gulp-util'),
     browserify      = require('browserify'),
     source          = require('vinyl-source-stream'),
     buffer          = require('vinyl-buffer'),
+    uglifyes        = require('uglify-es'),
     uglify          = require('gulp-uglify'),
+    composer        = require('gulp-uglify/composer');
     sourcemaps      = require('gulp-sourcemaps'),
     reactify        = require('reactify'),
     envify          = require('envify/custom'),
@@ -30,6 +33,7 @@ var gulp            = require('gulp'),
     reload          = browserSync.reload;
 
 
+    var minify = composer(uglifyes, console);
 
 // ----------------------------------------------------------------------------
 // Config - Paths to basic assets
@@ -89,6 +93,7 @@ gulp.task('libs', function () {
   b.require('nanoScroller')
   b.require('react')
   b.require('react-dom')
+  b.require('react-color')
   // b.transform(
   //     {global: true},
   //     envify({ NODE_ENV: 'production' }),
@@ -99,7 +104,8 @@ gulp.task('libs', function () {
   return b.bundle()
     .pipe(source('libs.js'))
     .pipe(buffer())
-    .pipe(gulpif(argv.build, uglify()))
+    .pipe(gulpif(argv.build, minify()))
+    .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
     .on('error', notify.onError({ message: 'Error: <%= error.message %>'}))
     .pipe(gulp.dest('./build/scripts'));
 });
@@ -115,12 +121,14 @@ gulp.task('scripts', function () {
   b.external('nanoScroller')
   b.external('react')
   b.external('react-dom')
+  b.external('react-color')
 
   return b.bundle()
     .pipe(source('bundle.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(gulpif(argv.build, uglify()))
+    .pipe(gulpif(argv.build, minify()))
+    .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
     .on('error', notify.onError({ message: 'Error: <%= error.message %>'}))
     .pipe(sourcemaps.write(config.scripts.distDirectory))
     .pipe(rename(config.scripts.distFile))
