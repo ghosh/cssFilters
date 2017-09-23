@@ -35,20 +35,34 @@ var ColorSwatch = React.createClass({
       position: 'absolute'
     }
 
+    const popover = {
+      position: 'absolute',
+      zIndex: '2'
+    }
+    const cover = {
+      position: 'fixed',
+      top: '0px',
+      right: '0px',
+      bottom: '0px',
+      left: '0px'
+    }
+
     return (
       <div className="color__box">
         <div className="color__swatch" onClick={ this.toggleColorPicker }>
           <div className="color__preview" style={swatchColor}></div>
         </div>
         <p className="color__text">{this.props.label}</p>
-        <ChromePicker
-          className="color-picker"
-          color={ this.props.overlayColor }
-          positionCSS={ popupPosition }
-          onChange={ this.props.updateColor }
-          onClose={ this.handleClose }
-          display={ this.state.displayColorPicker }
-        />
+        { this.state.displayColorPicker && <div style={ popover }>
+            <div style={ cover } onClick={ this.handleClose } />
+            <ChromePicker
+              className="color-picker"
+              color={ this.props.overlayColor }
+              positionCSS={ popupPosition }
+              onChange={ this.props.updateColor }
+            />
+          </div>
+        }
       </div>
     );
   }

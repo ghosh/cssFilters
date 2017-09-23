@@ -18152,20 +18152,34 @@ var ColorSwatch = React.createClass({displayName: "ColorSwatch",
       position: 'absolute'
     }
 
+    const popover = {
+      position: 'absolute',
+      zIndex: '2'
+    }
+    const cover = {
+      position: 'fixed',
+      top: '0px',
+      right: '0px',
+      bottom: '0px',
+      left: '0px'
+    }
+
     return (
       React.createElement("div", {className: "color__box"}, 
         React.createElement("div", {className: "color__swatch", onClick:  this.toggleColorPicker}, 
           React.createElement("div", {className: "color__preview", style: swatchColor})
         ), 
         React.createElement("p", {className: "color__text"}, this.props.label), 
-        React.createElement(ChromePicker, {
-          className: "color-picker", 
-          color:  this.props.overlayColor, 
-          positionCSS:  popupPosition, 
-          onChange:  this.props.updateColor, 
-          onClose:  this.handleClose, 
-          display:  this.state.displayColorPicker}
-        )
+         this.state.displayColorPicker && React.createElement("div", {style:  popover }, 
+            React.createElement("div", {style:  cover, onClick:  this.handleClose}), 
+            React.createElement(ChromePicker, {
+              className: "color-picker", 
+              color:  this.props.overlayColor, 
+              positionCSS:  popupPosition, 
+              onChange:  this.props.updateColor}
+            )
+          )
+        
       )
     );
   }
