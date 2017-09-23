@@ -34,6 +34,30 @@ var filters = {
       }
     }
   },
+  'amaro': {
+    filter: {
+      hueRotate: '-10',
+      contrast: '90',
+      saturate: '150',
+      brightness: '110',
+      blend: 'screen'
+    },
+    overlay: {
+      type: 'none'
+    }
+  },
+  'brannan': {
+    filter: {
+      sepia: '50',
+      contrast: '140',
+      blend: 'lighten',
+      opacity: '100'
+    },
+    overlay: {
+      type: 'solid',
+      color: { a: 0.31, b: 199, g: 44, r: 161 }
+    }
+  },
   'brooklyn': {
     filter: {
       contrast: '90',
@@ -53,6 +77,18 @@ var filters = {
         color: { a: 0.2, b: 200, g: 196, r: 183 },
         stop: 100
       }
+    }
+  },
+  'clarendon': {
+    filter: {
+      contrast: '120',
+      saturate: '125',
+      blend: 'overlay',
+      opacity: '100'
+    },
+    overlay: {
+      type: 'solid',
+      color: { a: 0.2, b: 227, g: 187, r: 127 }
     }
   },
   'earlybird': {
@@ -165,6 +201,20 @@ var filters = {
       }
     }
   },
+  'maven': {
+    filter: {
+      sepia: '25',
+      brightness: '95',
+      contrast: '95',
+      saturate: '150',
+      blend: 'hue',
+      opacity: '100'
+    },
+    overlay: {
+      type: 'solid',
+      color: { a: 0.2, b: 26, g: 230, r: 3 }
+    }
+  },
   'perpetua': {
     filter: {
       opacity: '50',
@@ -195,6 +245,19 @@ var filters = {
     overlay: {
       type: 'solid',
       color: { a: 1, b: 239, g: 205, r: 173 }
+    }
+  },
+  'stinson': {
+    filter: {
+      contrast: '75',
+      saturate: '85',
+      brightness: '115',
+      opacity: '100',
+      blend: 'soft-light'
+    },
+    overlay: {
+      type: 'solid',
+      color: { a: 0.2, b: 128, g: 149, r: 240 }
     }
   },
   'toaster': {
@@ -228,6 +291,19 @@ var filters = {
     overlay: {
       type: 'solid',
       color: { a: 1, b: 0, g: 68, r: 204 }
+    }
+  },
+  'valencia': {
+    filter: {
+      contrast: '108',
+      sepia: '8',
+      brightness: '108',
+      opacity: '50',
+      blend: 'exclusion'
+    },
+    overlay: {
+      type: 'solid',
+      color: { a: 1, b: 57, g: 3, r: 58 }
     }
   },
   'xpro2': {
