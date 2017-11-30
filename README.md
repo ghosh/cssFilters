@@ -23,11 +23,6 @@ There is only one gulp task which you would need - `gulp go`. This handles all t
 These flags can be passed together also. For example:- `gulp go --build --open`. This will open the browser and run the watch task in production mode.
 
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/U7SKSneQBRgvgkE68HFbqR1q/ghosh/cssFilters'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/U7SKSneQBRgvgkE68HFbqR1q/ghosh/cssFilters.svg' />
-</a>
-
-
 ---
 
 A little project by [@_ighosh](http://twitter.com/_ighosh).
