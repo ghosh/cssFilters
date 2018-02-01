@@ -1,6 +1,7 @@
 var React = require('react');
 var Color = require('./Color.jsx');
 var OverlayType = require('./overlaytype.jsx');
+var Enabled = require('./enabled.jsx');
 var GradientDirections = require('./gradientdirection.jsx');
 var GradientPositions = require('./gradientposition.jsx');
 var GradientSizes = require('./gradientsize.jsx');
@@ -97,6 +98,10 @@ var Background = React.createClass({
         <OverlayType
           overlayType={this.props.overlay.type}
           updateOverlayType={this.props.updateOverlayType}
+        />
+        <Enabled
+          enabled={this.props.enabled}
+          updateEnabled={this.props.updateEnabled}
         />
 
         {this.renderColors()}

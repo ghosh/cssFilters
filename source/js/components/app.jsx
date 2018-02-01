@@ -28,6 +28,7 @@ var App = React.createClass({
 
   getInitialState: function() {
     return {
+      enabled: true,
       preset: 'custom',
       image: {
         type: 'unsplash',
@@ -70,6 +71,7 @@ var App = React.createClass({
     var newState = Update(this.state, {
       filter: { $set : this._init.filter},
       overlay: { $set : this._init.overlay},
+      enabled: { $set : this._init.enabled},
       preset: { $set : 'custom'}
     })
     this.setState(newState);
@@ -112,11 +114,13 @@ var App = React.createClass({
   updatePreset: function(key) {
     var Filter = this._extend(this._init.filter, Presets[key].filter);
     var Overlay = this._extend(this._init.overlay, Presets[key].overlay);
+    var Enabled = this._extend(this._init.enabled, Presets[key].enabled);
 
     var newState = Update(this.state, {
       preset: {$set: key},
       filter: {$set: Filter},
-      overlay: {$set: Overlay}
+      overlay: {$set: Overlay},
+      enabled: {$set: Enabled}
     });
     this.setState(newState);
   },
@@ -173,6 +177,13 @@ var App = React.createClass({
         type: { $set: event.currentTarget.value }
       },
       preset: { $set: 'custom' }
+    });
+    this.setState(newState);
+  },
+
+  updateEnabled: function(event) {
+    var newState = Update(this.state, {
+      enabled: { $set: !this.state.enabled }
     });
     this.setState(newState);
   },
@@ -276,6 +287,7 @@ var App = React.createClass({
       overlay={this.state.overlay}
       filter={this.state.filter}
       gallery={this.state.gallery}
+      enabled={this.state.enabled}
       toggleGallery={this.toggleGallery}
       updateMainImage={this.updateMainImage}
       />
@@ -283,6 +295,7 @@ var App = React.createClass({
       <Sidebar
       ref="sidebar"
       overlay={this.state.overlay}
+      enabled={this.state.enabled}
       filter={this.state.filter}
       resetState={this.resetState}
       updateOverlay={this.updateOverlay}
@@ -292,6 +305,7 @@ var App = React.createClass({
       updateColor2={this.updateColor2}
       updateColor2Stop={this.updateColor2Stop}
       updateOverlayType={this.updateOverlayType}
+      updateEnabled={this.updateEnabled}
       updateGradientPositions={this.updateGradientPositions}
       handeUpdate={this.handeUpdate}
       />
