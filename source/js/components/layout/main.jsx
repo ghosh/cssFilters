@@ -21,7 +21,7 @@ var Main = React.createClass({
           <p className="gallery__trigger" onClick={this.props.toggleGallery}><i className="icon-settings"/>{galleryTriggerText}</p>
         </section>
 
-        <Photo overlay={this.props.overlay} filter={this.props.filter} enabled={this.props.enabled} image={this.props.image}/>
+        <Photo overlay={this.props.overlay} filter={this.props.filter} toggle={this.props.toggle} image={this.props.image}/>
 
         <div className="credits">
           <p className="credits__cite">Built by <a href="https://twitter.com/_ighosh" target="_blank">@_ighosh</a>. Presets from <a href="http://una.im/CSSgram/" target="_blank">cssgram</a> by <a href="https://twitter.com/una" target="_blank">@una</a></p>

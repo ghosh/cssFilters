@@ -5126,7 +5126,7 @@ var App = React.createClass({displayName: "App",
 
   getInitialState: function() {
     return {
-      enabled: true,
+      toggle: true,
       preset: 'custom',
       image: {
         type: 'unsplash',
@@ -5169,7 +5169,7 @@ var App = React.createClass({displayName: "App",
     var newState = Update(this.state, {
       filter: { $set : this._init.filter},
       overlay: { $set : this._init.overlay},
-      enabled: { $set : this._init.enabled},
+      toggle: { $set : this._init.toggle},
       preset: { $set : 'custom'}
     })
     this.setState(newState);
@@ -5212,13 +5212,13 @@ var App = React.createClass({displayName: "App",
   updatePreset: function(key) {
     var Filter = this._extend(this._init.filter, Presets[key].filter);
     var Overlay = this._extend(this._init.overlay, Presets[key].overlay);
-    var Enabled = this._extend(this._init.enabled, Presets[key].enabled);
+    var Toggle = this._extend(this._init.toggle, Presets[key].toggle);
 
     var newState = Update(this.state, {
       preset: {$set: key},
       filter: {$set: Filter},
       overlay: {$set: Overlay},
-      enabled: {$set: Enabled}
+      toggle: {$set: Toggle}
     });
     this.setState(newState);
   },
@@ -5238,7 +5238,7 @@ var App = React.createClass({displayName: "App",
     })
     this.setState(newState);
   },
-  
+
   updateOverlay: function(event) {
     var newState = Update(this.state, {
       filter: {
@@ -5279,9 +5279,9 @@ var App = React.createClass({displayName: "App",
     this.setState(newState);
   },
 
-  updateEnabled: function(event) {
+  updateToggle: function(event) {
     var newState = Update(this.state, {
-      enabled: { $set: !this.state.enabled }
+      toggle: { $set: !this.state.toggle }
     });
     this.setState(newState);
   },
@@ -5385,7 +5385,7 @@ var App = React.createClass({displayName: "App",
       overlay: this.state.overlay, 
       filter: this.state.filter, 
       gallery: this.state.gallery, 
-      enabled: this.state.enabled, 
+      toggle: this.state.toggle, 
       toggleGallery: this.toggleGallery, 
       updateMainImage: this.updateMainImage}
       )
@@ -5393,7 +5393,7 @@ var App = React.createClass({displayName: "App",
       React.createElement(Sidebar, {
       ref: "sidebar", 
       overlay: this.state.overlay, 
-      enabled: this.state.enabled, 
+      toggle: this.state.toggle, 
       filter: this.state.filter, 
       resetState: this.resetState, 
       updateOverlay: this.updateOverlay, 
@@ -5403,7 +5403,7 @@ var App = React.createClass({displayName: "App",
       updateColor2: this.updateColor2, 
       updateColor2Stop: this.updateColor2Stop, 
       updateOverlayType: this.updateOverlayType, 
-      updateEnabled: this.updateEnabled, 
+      updateToggle: this.updateToggle, 
       updateGradientPositions: this.updateGradientPositions, 
       handeUpdate: this.handeUpdate}
       )
@@ -5414,11 +5414,10 @@ var App = React.createClass({displayName: "App",
 
 module.exports = App;
 
-},{"../presets":69,"./layout/gallery.jsx":59,"./layout/main.jsx":60,"./layout/sidebar.jsx":61,"react":"react","react-addons-update":27}],50:[function(require,module,exports){
+},{"../presets":69,"./layout/gallery.jsx":58,"./layout/main.jsx":59,"./layout/sidebar.jsx":60,"react":"react","react-addons-update":27}],50:[function(require,module,exports){
 var React = require('react');
 var Color = require('./Color.jsx');
 var OverlayType = require('./overlaytype.jsx');
-var Enabled = require('./enabled.jsx');
 var GradientDirections = require('./gradientdirection.jsx');
 var GradientPositions = require('./gradientposition.jsx');
 var GradientSizes = require('./gradientsize.jsx');
@@ -5496,7 +5495,7 @@ var Background = React.createClass({
         )
       }
   },
-  
+
   renderOverlayOptions: function() {
     if ( this.props.overlay.type == 'solid' || this.props.overlay.type == 'radial' || this.props.overlay.type == 'linear' ) {
         return (
@@ -5516,13 +5515,9 @@ var Background = React.createClass({
           overlayType: this.props.overlay.type, 
           updateOverlayType: this.props.updateOverlayType}
         ), 
-        React.createElement(Enabled, {
-          enabled: this.props.enabled, 
-          updateEnabled: this.props.updateEnabled}
-        ), 
 
         this.renderColors(), 
-        
+
         this.renderOverlayOptions()
       )
     );
@@ -5531,7 +5526,7 @@ var Background = React.createClass({
 
 module.exports = Background;
 
-},{"./Color.jsx":48,"./blendmode.jsx":51,"./enabled.jsx":55,"./gradientdirection.jsx":56,"./gradientposition.jsx":57,"./gradientsize.jsx":58,"./overlaytype.jsx":62,"./range.jsx":64,"react":"react"}],51:[function(require,module,exports){
+},{"./Color.jsx":48,"./blendmode.jsx":51,"./gradientdirection.jsx":55,"./gradientposition.jsx":56,"./gradientsize.jsx":57,"./overlaytype.jsx":61,"./range.jsx":63,"react":"react"}],51:[function(require,module,exports){
 var React = require('react');
 
 var BlendMode = React.createClass({displayName: "BlendMode",
@@ -5780,22 +5775,6 @@ module.exports = ColorSwatch;
 },{"react":"react","react-color":"react-color"}],55:[function(require,module,exports){
 var React = require('react');
 
-var Enabled = React.createClass({displayName: "Enabled",
-    render: function() {
-      return (
-      React.createElement("fieldset", {className: "checkbox-group"}, 
-        React.createElement("input", {type: "checkbox", name: "enabled", id: "c1", className: "checkbox", checked: this.props.enabled, onChange: this.props.updateEnabled}), 
-        React.createElement("label", {className: "checkbox-label", htmlFor: "c1"}, React.createElement("i", null), React.createElement("span", null, this.props.enabled ? 'Disable' : 'Enable', " effect"))
-      )
-      );
-    }
-});
-
-module.exports = Enabled;
-
-},{"react":"react"}],56:[function(require,module,exports){
-var React = require('react');
-
 var GradientDirection = React.createClass({displayName: "GradientDirection",
     render: function() {
 
@@ -5822,7 +5801,7 @@ var GradientDirection = React.createClass({displayName: "GradientDirection",
 
 module.exports = GradientDirection;
 
-},{"react":"react"}],57:[function(require,module,exports){
+},{"react":"react"}],56:[function(require,module,exports){
 var React = require('react');
 
 var GradientPosition = React.createClass({displayName: "GradientPosition",
@@ -5851,7 +5830,7 @@ var GradientPosition = React.createClass({displayName: "GradientPosition",
 
 module.exports = GradientPosition;
 
-},{"react":"react"}],58:[function(require,module,exports){
+},{"react":"react"}],57:[function(require,module,exports){
 var React = require('react');
 
 var GradientSize = React.createClass({displayName: "GradientSize",
@@ -5880,7 +5859,7 @@ var GradientSize = React.createClass({displayName: "GradientSize",
 
 module.exports = GradientSize;
 
-},{"react":"react"}],59:[function(require,module,exports){
+},{"react":"react"}],58:[function(require,module,exports){
 var React = require('react');
 var $ = require('jquery');
 var nanoScroller = require('nanoScroller');
@@ -5952,7 +5931,7 @@ var Gallery = React.createClass({displayName: "Gallery",
 
 module.exports = Gallery;
 
-},{"../../factory":67,"../../presets":69,"../../vendor/drag":72,"classnames":1,"jquery":"jquery","nanoScroller":"nanoScroller","react":"react"}],60:[function(require,module,exports){
+},{"../../factory":67,"../../presets":69,"../../vendor/drag":72,"classnames":1,"jquery":"jquery","nanoScroller":"nanoScroller","react":"react"}],59:[function(require,module,exports){
 var React = require('react');
 var Photo = require('../photo.jsx');
 var UnsplashModal = require('../unsplashmodal.jsx');
@@ -5976,7 +5955,7 @@ var Main = React.createClass({displayName: "Main",
           React.createElement("p", {className: "gallery__trigger", onClick: this.props.toggleGallery}, React.createElement("i", {className: "icon-settings"}), galleryTriggerText)
         ), 
 
-        React.createElement(Photo, {overlay: this.props.overlay, filter: this.props.filter, enabled: this.props.enabled, image: this.props.image}), 
+        React.createElement(Photo, {overlay: this.props.overlay, filter: this.props.filter, toggle: this.props.toggle, image: this.props.image}), 
 
         React.createElement("div", {className: "credits"}, 
           React.createElement("p", {className: "credits__cite"}, "Built by ", React.createElement("a", {href: "https://twitter.com/_ighosh", target: "_blank"}, "@_ighosh"), ". Presets from ", React.createElement("a", {href: "http://una.im/CSSgram/", target: "_blank"}, "cssgram"), " by ", React.createElement("a", {href: "https://twitter.com/una", target: "_blank"}, "@una"))
@@ -5988,7 +5967,7 @@ var Main = React.createClass({displayName: "Main",
 
 module.exports = Main;
 
-},{"../photo.jsx":63,"../unsplashmodal.jsx":65,"../uploadmodal.jsx":66,"react":"react"}],61:[function(require,module,exports){
+},{"../photo.jsx":62,"../unsplashmodal.jsx":65,"../uploadmodal.jsx":66,"react":"react"}],60:[function(require,module,exports){
 var React = require('react');
 var $ = require('jquery');
 var nanoScroller = require('nanoScroller');
@@ -5996,6 +5975,7 @@ var RangeSlider = require('../range.jsx');
 var CodeBlock = require('../codeblock.jsx');
 var BlendModes = require('../blendmode.jsx');
 var Background = require('../background.jsx');
+var Toggle = require('../toggle.jsx');
 var ReactTabs = require('react-tabs');
 var Tab = ReactTabs.Tab;
 var Tabs = ReactTabs.Tabs;
@@ -6060,7 +6040,7 @@ var Sidebar = React.createClass({displayName: "Sidebar",
                 handeUpdate: this.props.handeUpdate, 
                 filter: this.props.filter, 
                 overlay: this.props.overlay, 
-                enabled: this.props.enabled, 
+                toggle: this.props.toggle, 
                 updateOverlay: this.props.updateOverlay, 
                 updateColor1: this.props.updateColor1, 
                 updateColor1Stop: this.props.updateColor1Stop, 
@@ -6068,11 +6048,18 @@ var Sidebar = React.createClass({displayName: "Sidebar",
                 updateColor2Stop: this.props.updateColor2Stop, 
                 updateOverlayColor: this.props.updateOverlayColor, 
                 updateOverlayType: this.props.updateOverlayType, 
-                updateEnabled: this.props.updateEnabled, 
+                updateToggle: this.props.updateToggle, 
                 updateGradientPositions: this.props.updateGradientPositions}
+              ), 
+
+              React.createElement("div", {className: "tabs__heading"}, 
+                React.createElement("p", {className: "tabs__subheader"}, "Toggle effect")
+              ), 
+
+              React.createElement(Toggle, {
+                toggle: this.props.toggle, 
+                updateToggle: this.props.updateToggle}
               )
-
-
 
             ), 
             React.createElement(TabPanel, {className: "tabs__content"}, 
@@ -6104,7 +6091,7 @@ var Sidebar = React.createClass({displayName: "Sidebar",
 
 module.exports = Sidebar;
 
-},{"../background.jsx":50,"../blendmode.jsx":51,"../codeblock.jsx":52,"../range.jsx":64,"jquery":"jquery","nanoScroller":"nanoScroller","react":"react","react-tabs":45}],62:[function(require,module,exports){
+},{"../background.jsx":50,"../blendmode.jsx":51,"../codeblock.jsx":52,"../range.jsx":63,"../toggle.jsx":64,"jquery":"jquery","nanoScroller":"nanoScroller","react":"react","react-tabs":45}],61:[function(require,module,exports){
 var React = require('react');
 
 var OverlayType = React.createClass({displayName: "OverlayType",
@@ -6126,7 +6113,7 @@ var OverlayType = React.createClass({displayName: "OverlayType",
 
 module.exports = OverlayType;
 
-},{"react":"react"}],63:[function(require,module,exports){
+},{"react":"react"}],62:[function(require,module,exports){
 var React = require('react');
 var FilterFactory = require('../factory');
 var ImageLoader = require('react-imageloader');
@@ -6143,7 +6130,7 @@ var Photo = React.createClass({displayName: "Photo",
     return this.props.overlay !== nextProps.overlay ||
              this.props.filter !== nextProps.filter ||
              this.props.image !== nextProps.image ||
-             this.props.enabled !== nextProps.enabled ||
+             this.props.toggle !== nextProps.toggle ||
              this.state != nextState;
   },
 
@@ -6179,7 +6166,7 @@ var Photo = React.createClass({displayName: "Photo",
 
     return (
       React.createElement("div", {className: "photo"}, 
-        React.createElement("figure", {style: this.props.enabled ? filter : {}}, 
+        React.createElement("figure", {style: this.props.toggle ? filter : {}}, 
           React.createElement("div", {style: overlay}), 
           React.createElement(ImageLoader, {src: img, className: "photo__img", wrapper: React.DOM.div, preloader: this.preloader, onLoad: this.photoLoaded})
         )
@@ -6190,7 +6177,7 @@ var Photo = React.createClass({displayName: "Photo",
 
 module.exports = Photo;
 
-},{"../factory":67,"react":"react","react-imageloader":29}],64:[function(require,module,exports){
+},{"../factory":67,"react":"react","react-imageloader":29}],63:[function(require,module,exports){
 var React = require('react');
 
 var RangleSlider = React.createClass({displayName: "RangleSlider",
@@ -6217,6 +6204,23 @@ var RangleSlider = React.createClass({displayName: "RangleSlider",
 });
 
 module.exports = RangleSlider;
+
+},{"react":"react"}],64:[function(require,module,exports){
+var React = require('react');
+
+var Toggle = React.createClass({displayName: "Toggle",
+    render: function() {
+      return (
+      React.createElement("fieldset", {className: "toggle-group"}, 
+        React.createElement("input", {type: "checkbox", name: "toggle", id: "t1", className: "tgl", checked: this.props.toggle, onChange: this.props.updateToggle}), 
+        React.createElement("label", {className: "tgl-btn", htmlFor: "t1"}, React.createElement("i", null)), 
+        React.createElement("label", {className: "toggle-label", htmlFor: "t1"}, React.createElement("i", null), this.props.toggle ? 'On' : 'Off')
+      )
+      );
+    }
+});
+
+module.exports = Toggle;
 
 },{"react":"react"}],65:[function(require,module,exports){
 var React = require('react');

@@ -1,0 +1,98 @@
+// scss-lint:disable ColorVariable NestingDepth
+$rad-color: #15b0ed;
+$speed: .15s;
+$size: 14px;
+
+.tgl {
+	height: 1px;
+	opacity: 0;
+	position: absolute;
+	width: 1px;
+	&,
+  &:after,
+  &:before,
+	& *,
+  & *:after,
+  & *:before,
+	& + .tgl-btn {
+		box-sizing: border-box;
+		&::selection {
+			background: none;
+		}
+	}
+	&:active,
+	&:focus {
+		+ .tgl-btn {
+			box-shadow: 0 0 1px lighten($rad-color, 50%), 0 0 2px lighten($rad-color, 30%), 0 0 5px $rad-color;
+		}
+	}
+  + .tgl-btn {
+		margin-top: -7px;
+    position: absolute;
+    top: 50%;
+		box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .08), 1px 1px 1px rgba(255, 255, 255, .03);
+		background: c('base', 'tab-bg-color');
+		border-radius: $size;
+		transition: $speed;
+		outline: 0;
+		display: inline-block;
+		width: $size * 2;
+		height: $size;
+		cursor: pointer;
+    user-select: none;
+		&:after,
+    &:before {
+			position: relative;
+			display: block;
+			content: "";
+			width: 50%;
+			height: 100%;
+		}
+		&:after {
+			border-radius: 50%;
+			background: $rad-color;
+			left: 0;
+			transform: scale(0.8);
+			transition: $speed;
+		}
+		&:before {
+			display: none;
+		}
+		&:hover {
+			& + .toggle-label {
+				color: rgba(255, 255, 255, 1);
+		  }
+		}
+	}
+
+	&:checked + .tgl-btn {
+		background: c('base', 'tab-bg-color');
+		& + .toggle-label {
+			color: c('base', 'tab-label-color-active');
+		}
+	}
+
+	&:checked + .tgl-btn:after {
+		left: 50%;
+	}
+}
+
+.toggle-label {
+	color: c('base', 'slider-label-color');
+	cursor: pointer;
+	display: inline-block;
+	font-size: 13px;
+	line-height: 2em;
+	text-indent: 1em;
+	position: relative;
+	margin-left: $size * 2;
+	&:hover {
+		color: rgba(255, 255, 255, 1);
+	}
+}
+
+.toggle-group {
+  margin-bottom: 20px;
+  margin-top: 10px;
+  position: relative;
+}

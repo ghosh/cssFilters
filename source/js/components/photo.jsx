@@ -14,7 +14,7 @@ var Photo = React.createClass({
     return this.props.overlay !== nextProps.overlay ||
              this.props.filter !== nextProps.filter ||
              this.props.image !== nextProps.image ||
-             this.props.enabled !== nextProps.enabled ||
+             this.props.toggle !== nextProps.toggle ||
              this.state != nextState;
   },
 
@@ -50,7 +50,7 @@ var Photo = React.createClass({
 
     return (
       <div className="photo">
-        <figure style={this.props.enabled ? filter : {}}>
+        <figure style={this.props.toggle ? filter : {}}>
           <div style={overlay}/>
           <ImageLoader src={img} className="photo__img" wrapper={React.DOM.div} preloader={this.preloader} onLoad={this.photoLoaded}></ImageLoader>
         </figure>

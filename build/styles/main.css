@@ -1899,6 +1899,88 @@ select {
   margin-top: 10px;
   position: relative; }
 
+.tgl {
+  height: 1px;
+  opacity: 0;
+  position: absolute;
+  width: 1px; }
+  .tgl, .tgl:after, .tgl:before,
+  .tgl *,
+  .tgl *:after,
+  .tgl *:before,
+  .tgl + .tgl-btn {
+    box-sizing: border-box; }
+    .tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection,
+    .tgl *::-moz-selection,
+    .tgl *:after::-moz-selection,
+    .tgl *:before::-moz-selection,
+    .tgl + .tgl-btn::-moz-selection {
+      background: none; }
+    .tgl::selection, .tgl:after::selection, .tgl:before::selection,
+    .tgl *::selection,
+    .tgl *:after::selection,
+    .tgl *:before::selection,
+    .tgl + .tgl-btn::selection {
+      background: none; }
+  .tgl:active + .tgl-btn, .tgl:focus + .tgl-btn {
+    box-shadow: 0 0 1px white, 0 0 2px #a3e0f8, 0 0 5px #15b0ed; }
+  .tgl + .tgl-btn {
+    margin-top: -7px;
+    position: absolute;
+    top: 50%;
+    box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.08), 1px 1px 1px rgba(255, 255, 255, 0.03);
+    background: #0f1010;
+    border-radius: 14px;
+    transition: 0.15s;
+    outline: 0;
+    display: inline-block;
+    width: 28px;
+    height: 14px;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none; }
+    .tgl + .tgl-btn:after, .tgl + .tgl-btn:before {
+      position: relative;
+      display: block;
+      content: "";
+      width: 50%;
+      height: 100%; }
+    .tgl + .tgl-btn:after {
+      border-radius: 50%;
+      background: #15b0ed;
+      left: 0;
+      transform: scale(0.8);
+      transition: 0.15s; }
+    .tgl + .tgl-btn:before {
+      display: none; }
+    .tgl + .tgl-btn:hover + .toggle-label {
+      color: white; }
+  .tgl:checked + .tgl-btn {
+    background: #0f1010; }
+    .tgl:checked + .tgl-btn + .toggle-label {
+      color: #c4ccdf; }
+  .tgl:checked + .tgl-btn:after {
+    left: 50%; }
+
+.toggle-label {
+  color: #7e8792;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 13px;
+  line-height: 2em;
+  text-indent: 1em;
+  position: relative;
+  margin-left: 28px; }
+  .toggle-label:hover {
+    color: white; }
+
+.toggle-group {
+  margin-bottom: 20px;
+  margin-top: 10px;
+  position: relative; }
+
 .gallery {
   background-color: #0f1010;
   -ms-flex-preferred-size: 0;

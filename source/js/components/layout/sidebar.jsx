@@ -5,6 +5,7 @@ var RangeSlider = require('../range.jsx');
 var CodeBlock = require('../codeblock.jsx');
 var BlendModes = require('../blendmode.jsx');
 var Background = require('../background.jsx');
+var Toggle = require('../toggle.jsx');
 var ReactTabs = require('react-tabs');
 var Tab = ReactTabs.Tab;
 var Tabs = ReactTabs.Tabs;
@@ -69,7 +70,7 @@ var Sidebar = React.createClass({
                 handeUpdate={this.props.handeUpdate}
                 filter={this.props.filter}
                 overlay={this.props.overlay}
-                enabled={this.props.enabled}
+                toggle={this.props.toggle}
                 updateOverlay={this.props.updateOverlay}
                 updateColor1={this.props.updateColor1}
                 updateColor1Stop={this.props.updateColor1Stop}
@@ -77,11 +78,18 @@ var Sidebar = React.createClass({
                 updateColor2Stop={this.props.updateColor2Stop}
                 updateOverlayColor={this.props.updateOverlayColor}
                 updateOverlayType={this.props.updateOverlayType}
-                updateEnabled={this.props.updateEnabled}
+                updateToggle={this.props.updateToggle}
                 updateGradientPositions={this.props.updateGradientPositions}
               />
 
+              <div className="tabs__heading">
+                <p className="tabs__subheader">Toggle effect</p>
+              </div>
 
+              <Toggle
+                toggle={this.props.toggle}
+                updateToggle={this.props.updateToggle}
+              />
 
             </TabPanel>
             <TabPanel className="tabs__content">
