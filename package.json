@@ -27,7 +27,7 @@
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
     "imagemin-pngquant": "^5.0.0",
-    "jquery": "^2.1.4",
+    "jquery": "^3.5.0",
     "nanoscroller": "^0.8.7",
     "postcss-vmin": "^2.0.0",
     "postcss-will-change": "^1.0.0",
